@@ -1,16 +1,13 @@
 html, body {
   height: 100%;
 }
-
 body {
-  
+
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f3dd99;
-
 }
-
 .form-signin {
   max-width: 20em;
   padding: 3em;
@@ -35,10 +32,8 @@ body {
 footer{
   background-color: #474747;
   position: absolute;
-
   padding: 1em;
   padding-bottom: 2em;
-
   width: 100%;
   color: #F5F5F5;
   bottom: 0;
@@ -56,5 +51,4 @@ footer{
     margin-right: 5em;
     border-top: 1px solid #FF8800;
 }
-
 
