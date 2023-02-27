@@ -14,6 +14,7 @@ body {
 .form-signin {
   max-width: 20em;
   padding: 3em;
+  background-color: #FFFFFF;
 }
 
 .form-signin .form-floating:focus-within {
