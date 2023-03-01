@@ -11,8 +11,9 @@ html, body {
   
   }
   
+  
   .form-signin {
-    max-width: 30em;
+    max-width:50em;
     padding: 3em;
     background-color: #FFFFFF;
   }
@@ -57,5 +58,13 @@ html, body {
 
 .empty{
   background-color: red;
+}
+
+.inputFile{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.terms{
+  margin-bottom: 1em;
 }
   
