@@ -21,9 +21,9 @@ COSC 360 Proposal
 - View Statistics of the website
 - Have the ability to filter information of the site and threads
         
-- Moderator 
+- Moderator (Thread creator)
 - Delete posts and comments from specific threads within specific categories 
-- Enforce and set rules on categories
+- Enforce and set rules on thread
         
 - User 
 - Create, delete and comment on threads
