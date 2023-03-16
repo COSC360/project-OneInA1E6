@@ -43,7 +43,7 @@
             </div>
         </div>
 
-    <form action="create.php" method="post">
+    <form action="../../server/create.php" method="post">
         <div class="form-group text-right">
         <div class="row p-1 mb-2 bg-white rounded border">
             
