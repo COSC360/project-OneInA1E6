@@ -1,13 +1,14 @@
 <?php
-    include "config.php";
+    include "../database/config.php";
 
-    if(isset($_POST['submit'])){
         $userName = $_POST['userName'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-    }
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+  
 
-    $SQL = "INSERT INTO 'users' ('userName', 'email', 'password') VALUES ('$userName', '$email', '$password')";
+    $sql = "INSERT INTO 'users' ('userName', 'email', 'password', 'firstName', 'lastName') VALUES ('$userName', '$email', '$password', '$firstName', '$lastName')";
     
     $result = $conn->query($sql);
 
@@ -15,7 +16,7 @@
         echo "New User created";
     }
     else{
-        echo "Error: User could not be created" . $sql . "<br>" $conn->error;
+        echo "Error: User could not be created" . $sql . "<br>" .  $conn->error;
     }
 
     $conn.close();

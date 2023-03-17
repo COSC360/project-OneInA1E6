@@ -32,38 +32,38 @@
   <main class="form-signin m-auto align-items-center ">    
     <form id = "mainForm">
       <h1 class="h3 mb-3 fw-normal">Register New Account</h1>
-        
-      <div class="form-floating">
-        <input type="userName" class="form-control required" id="floatingInput" placeholder="userName">
-        <label for="floatingInput">User Name</label>
-      </div>
+        <form action="../../server/register.php" method = "POST">
+            <div class="form-floating">
+              <input type="userName" name="userName" class="form-control required"  placeholder="userName">
+              <label for="floatingInput">User Name</label>
+            </div>
 
-      <div class="form-floating">
-        <input type="firstName" class="form-control required" id="floatingInput" placeholder="John">
-        <label for="floatingInput">First Name</label>
-      </div>
-      <div class="form-floating">
-        <input type="lastName" class="form-control required" id="floatingInput" placeholder="Appleseed">
-        <label for="floatingInput">Last Name</label>
-      </div>
-      <div class="form-floating">
-        <input type="email" class="form-control required" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email Address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control required" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-      <div class = "inputFile">
-        <label for="profileImage" class = "required">Profile Picture:</label>
-        <input type="file" id="profileImage" name="profileImage" accept="image/png, image/jpeg">
-      </div>
-      
-      <div class = "terms">
-        <label>I accept the <a href="#">Terms and Conditions</a></label>
-        <input type="checkbox" name="accept" class="required">
-       </div>
-      <button class="w-100 btn m-auto btn-lg btn-primary" type="submit">Create Account</button>
+            <div class="form-floating">
+              <input type="firstName" name="firstName" class="form-control required" placeholder="John">
+              <label for="floatingInput">First Name</label>
+            </div>
+            <div class="form-floating">
+              <input type="lastName" name="lastName" class="form-control required" placeholder="Appleseed">
+              <label for="floatingInput">Last Name</label>
+            </div>
+            <div class="form-floating">
+              <input type="email" name="email" class="form-control required"  placeholder="name@example.com">
+              <label for="floatingInput">Email Address</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" name="password" class="form-control required" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <!-- <div class = "inputFile">
+              <label for="profileImage" class = "required">Profile Picture:</label>
+              <input type="file" id="profileImage" name="profileImage" accept="image/png, image/jpeg">
+            </div>
+             -->
+            <div class = "terms">
+              <label>I accept the <a href="#">Terms and Conditions</a></label>
+              <input type="checkbox" name="accept" class="required">
+            </div>
+            <button class="w-100 btn m-auto btn-lg btn-primary" type="submit">Create Account</button>
     </form>
   </main>
 
