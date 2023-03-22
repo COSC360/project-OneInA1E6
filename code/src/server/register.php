@@ -18,7 +18,7 @@
     else{
         echo "Error: User could not be created" . $sql . "<br>" .  $conn->error;
     }
-
+    
     $conn.close();
 
 ?>

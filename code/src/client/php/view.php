@@ -35,13 +35,11 @@
 
         <th>UserName</th>
 
+        <th>Email</th>
+
         <th>First Name</th>
 
         <th>Last Name</th>
-
-        <th>Email</th>
-
-        <th></th>
 
         <th>Action</th>
 
@@ -63,13 +61,11 @@
 
                     <td><?php echo $row['id']; ?></td>
 
+                    <td><?php echo $row['email']; ?></td>
+
                     <td><?php echo $row['firstName']; ?></td>
 
                     <td><?php echo $row['lastName']; ?></td>
-
-                    <td><?php echo $row['email']; ?></td>
-
-                    <td><?php echo $row['userName']; ?></td>
 
                     <td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
 
