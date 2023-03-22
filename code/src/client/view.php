@@ -5,7 +5,6 @@
 
     $result = $conn->query($sql);
 
-echo 'include ";'
 ?>
 <!DOCTYPE html>
 

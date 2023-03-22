@@ -1,6 +1,6 @@
 <?php
 
-
+echo '
 <body>
   <div class="container sticky-top bg-white rounded-3">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom ">
@@ -49,4 +49,6 @@
     </form>
   </main>
 
-</body>
+</body>';
+
+?>

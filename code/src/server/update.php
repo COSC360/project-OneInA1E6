@@ -16,33 +16,51 @@
 <?php
 include "../client/header.php";
 
-echo '
-<body>
-    <form method="post" action="registerUser.php" id="mainForm" enctype="multipart/form-data">
-    First Name:<br>
-    <input type="text" name="firstName" id="firstName" class="required">
-    <br>
-    Last Name:<br>
-    <input type="text" name="lastName" id="lastName" class="required">
-    <br>
-    Username:<br>
-    <input type="text" name="userName" id="userName" class="required">
-    <br>
-    email:<br>
-    <input type="text" name="email" id="email" class="required">
-    <br>
-    Password:<br>
-    <input type="password" name="password_1" id="password_1" class="required">
-    <br>
-    Re-enter Password:<br>
-    <input type="password" name="password_2" id="password_2" class="required">
-    <br>
-
-    <br><br>
-    <input type="submit" value="Create New User">
-    </form>
-  </body>
-';
-
-include "../client/footer.php";
 ?>
+<body>
+    <h2>User Update Form</h2>
+        <form action="" method="post">
+          <fieldset>
+            <legend>Personal information:</legend>
+           
+            First name:<br>
+
+            <input type="text" name="firstname" value="">
+
+            <input type="hidden" name="id" value="">
+
+            <br>
+
+            Last name:<br>
+
+            <input type="text" name="lastname" value="<?php echo $lastname; ?>">
+
+            <br>
+
+            Email:<br>
+
+            <input type="email" name="email" value="<?php echo $email; ?>">
+
+            <br>
+
+            Password:<br>
+
+            <input type="password" name="password" value="<?php echo $password; ?>">
+
+            <br><br>
+
+            <input type="submit" value="Update" name="update">
+
+          </fieldset>
+
+        </form> 
+
+        </body>
+
+        </html> 
+
+    <?php
+        include "../client/footer.php";
+    ?>
+
+?> 

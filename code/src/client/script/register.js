@@ -1,34 +1,50 @@
-// var testingValid = function(event) {
-//     var recItems = document.getElementsByClassName("required");
-//     for(var i=0; i < recItems.length; i++){
-//         if(recItems[i].type == "checkbox"){
-//             if(recItems[i].checked == false){
-//                 event.preventDefault();
-//                 recItems[i].parentNode.classList.add("empty");
-//             }else{
-//                 recItems[i].parentNode.classList.remove("empty");
-//             }
-//         }
-//         if(recItems[i].value == ''){
-//             event.preventDefault();
-//             recItems[i].classList.add("empty");
-//         }
-//         else{
-//             recItems[i].classList.remove("empty");
-//         }
-       
-//     }
-// }
+function isBlank(inputField)
+{
+    if (inputField.value=="")
+    {
+         return true;
+    }
+    return false;
+}
 
+function makeRed(inputDiv){
+    inputDiv.style.borderColor="#AA0000";
+}
 
-// window.onload = function() {
-//     var form = document.getElementById("mainForm");
-//     var recItems = document.getElementsByClassName("required");
-   
-//     for(var i=0; i < recItems.length; i++){
-// 	    recItems[i].onchange = function(){
-// 	    this.classList.remove('empty');
-// 	    }
-//     }
-//     form.addEventListener("submit", testingValid);
-// }
+function makeClean(inputDiv){
+    inputDiv.style.borderColor="#FFFFFF";
+}
+
+window.onload = function()
+{
+    var mainForm = document.getElementById("mainForm");
+    var requiredInputs = document.querySelectorAll(".required");
+
+    mainForm.onsubmit = function(e)
+    {
+         var requiredInputs = document.querySelectorAll(".required");
+       var err = false;
+
+         for (var i=0; i < requiredInputs.length; i++)
+       {
+            if( isBlank(requiredInputs[i]))
+          {
+                  err |= true;
+                  makeRed(requiredInputs[i]);
+            }
+            else
+          {
+                  makeClean(requiredInputs[i]);
+            }
+        }
+      if (err == true)
+      {
+        e.preventDefault();
+      }
+      else
+      {
+        console.log('checking match');
+        checkPasswordMatch(e);
+      }
+    }
+}

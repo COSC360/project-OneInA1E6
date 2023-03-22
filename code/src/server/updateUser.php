@@ -7,13 +7,13 @@ if (isset($_POST['update'])) {
 
     $id = $_POST['id'];
 
-    $lastname = $_POST['lastname'];
+    $lastname = $_POST['lastName'];
 
     $email = $_POST['email'];
 
     $password = $_POST['password'];
 
-    $sql = "UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`email`='$email',`password`='$password' WHERE `id`='$user_id'"; 
+    $sql = "UPDATE users SET firstname='$firstname',lastName='$lastname',emaiL='$email',password='$password' WHERE id='$id'"; 
 
     $result = $conn->query($sql); 
 
