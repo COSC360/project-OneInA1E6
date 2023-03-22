@@ -50,7 +50,7 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password_1', '$firstname', '$lastname')";
   	mysqli_query($conn, $query);
   	$_SESSION['userName'] = $username;
-  	$_SESSION['success'] = "You are now logged in";
+  	$_SESSION['loggedIn'] = "You are now logged in";
   	header('location: ../client/index.php');
   }
 }
@@ -72,10 +72,10 @@ if (isset($_POST['login_user'])) {
   	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['userName'] = $username;
-  	  $_SESSION['success'] = "You are now logged in";
+  	  $_SESSION['LoggedIn'] = "You are now logged in";
   	  header('location: ../client/index.php');
   	}else {
-  		array_push($errors, "Wrong username/password combination" . $password);
+  		array_push($errors, "Wrong username/password combination");
   	}
   }
 }
