@@ -30,8 +30,7 @@ include('registerUser.php')
 	
   <form method="post" action="register.php">
   	<?php include('../client/errors.php'); ?>
-  	
-    <div class="input-group">
+  	<div class="input-group">
   	  <label>Username</label>
   	  <input type="text" name="userName" value="<?php echo $userName; ?>">
   	</div>

@@ -46,14 +46,12 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = md5($password_1);//encrypt the password before saving in the database
-
   	$query = "INSERT INTO users (userName, email, password, firstName, lastName) 
-  			  VALUES('$username', '$email', '$password', '$firstname', '$lastname')";
+  			  VALUES('$username', '$email', '$password_1', '$firstname', '$lastname')";
   	mysqli_query($conn, $query);
   	$_SESSION['userName'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: login.php');
+  	header('location: ../client/index.php');
   }
 }
 
@@ -70,15 +68,14 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$password = md5($password);
-  	$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+  	$query = "SELECT * FROM users WHERE userName='$username' AND password='$password'";
   	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['username'] = $username;
+  	  $_SESSION['userName'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
   	  header('location: ../client/index.php');
   	}else {
-  		array_push($errors, "Wrong username/password combination");
+  		array_push($errors, "Wrong username/password combination" . $password);
   	}
   }
 }
