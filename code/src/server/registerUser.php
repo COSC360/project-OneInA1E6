@@ -8,6 +8,7 @@ $email    = "";
 $errors = array(); 
 include "../client/errors.php";
 // REGISTER USER
+if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($conn, $_POST['userName']);
   $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -52,9 +53,9 @@ include "../client/errors.php";
   	mysqli_query($conn, $query);
   	$_SESSION['userName'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: ../client/index.php');
+  	header('location: login.php');
   }
-
+}
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
@@ -75,7 +76,7 @@ if (isset($_POST['login_user'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: index.php');
+  	  header('location: ../client/index.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
@@ -83,32 +84,3 @@ if (isset($_POST['login_user'])) {
 }
 
 ?>
-
-
-<?php
-    // session_start();
-    // include "../database/config.php";
-    // require 'valid.php';
-
-    
-    //     $userName = $_POST['userName'];
-    //     $password = $_POST['password'];
-    //     $email = $_POST['email'];
-    //     $firstName = $_POST['firstName'];
-    //     $lastName = $_POST['lastName'];
-
-
-    // $sql = "INSERT INTO users (userName, email, password, firstName, lastName) VALUES ('$userName', '$email', '$password', '$firstName', '$lastName')";
-    
-    // $result = $conn->query($sql);
-
-    // if($result == TRUE){
-    //     echo "New User Succesfully created";
-    // }
-    // else{
-    //     echo "Error: User could not be created" . $sql . "<br>" .  $conn->error;
-    // }
-
-    
-    // mysqli_close($conn);
-?> 
