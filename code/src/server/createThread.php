@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // initializing variables
 include "../database/config.php";
@@ -8,7 +7,7 @@ $errors = array();
 include "../client/errors.php";
 
 // CHECK USER
-if (isset($_SESSION['userName'])){
+if (isset($_SESSION['loggedIn'])){
     $userName = $_SESSION['userName'];
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $category = mysqli_real_escape_string($conn, $_POST['category']);
@@ -22,12 +21,6 @@ if (isset($_SESSION['userName'])){
   if (empty($category)) {
   	array_push($errors, "Category is required");
   }
-  if (empty($familyFriendly)) {
-    array_push($errors, "Family Freindly status must be declared");
-  }
-  if (empty($friendsOnly)) {
-    array_push($errors, "Freinds only status must be declared");
-  }
   if (empty($description)) {
     array_push($errors, "Description is required");
   }
@@ -38,8 +31,6 @@ if (isset($_SESSION['userName'])){
   			  VALUES('$userName', $title, '$category', '$familyFriendly', '$firstname', '$lastname')";
   	mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['userName'] = $username;
-  	  $_SESSION['LoggedIn'] = "TRUE";
   	  header('location: ../client/index.php');
   	}else {
   		array_push($errors, "There was an error creating the thread");

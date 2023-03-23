@@ -17,7 +17,7 @@ echo '
     <div class= "container sticky-top rounded-3">
     <div class="container sticky-top bg-white rounded-3">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
-            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
+            <a href="../client/index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
                 <!-- logo -->
                 <span class="fs-4 p-1 rounded-2 bg-warning">JEMS-EH</span>
             </a>
