@@ -8,7 +8,7 @@ $email    = "";
 $errors = array(); 
 include "../client/errors.php";
 // REGISTER USER
-if (isset($_POST['reg_user'])) {
+if (isset($_POST['submit'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($conn, $_POST['userName']);
   $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -46,8 +46,7 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$query = "INSERT INTO users (userName, email, password, firstName, lastName) 
-  			  VALUES('$username', '$email', '$password_1', '$firstname', '$lastname')";
+  	$query = "INSERT INTO users (userName, email, password, firstName, lastName) VALUES('$username', '$email', '$password_1', '$firstname', '$lastname')";
   	mysqli_query($conn, $query);
   	$_SESSION['userName'] = $username;
   	$_SESSION['loggedIn'] = "true";
@@ -72,7 +71,7 @@ if (isset($_POST['login_user'])) {
   	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['userName'] = $username;
-  	  $_SESSION['loggedIn'] = "true";
+  	  $_SESSION['loggedin'] = "true";
   	  header('location: ../client/index.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");

@@ -16,7 +16,7 @@
   <div class= "container sticky-top rounded-3">
 
   <?php
-  session_start();
+
   include "../client/header.php";
   include ("../server/createThread.php")
   ?>
@@ -27,41 +27,42 @@
             </div>
         </div>
 
-    <form action="../server/createThread.php" method="post">
+    <form action="create.php" method="post">
+    <?php include('../client/errors.php'); ?>
         <div class="form-group text-right">
         <div class="row p-1 mb-2 bg-white rounded border">
             
                 <label for="title" class = "mb-1"><h2>Thread Title</h2></label>
                 <input type="text" name = "title" class = "mb-1"/>
-
-                <Label for = "category" class = "mb-1">Category Name</Label>
-                <br>
+                
+                <label for = "category" class = "mb-1"><h4>Category Name</h4></label>
                 <input type="text" name = "category" class = "mb-1"/>
                 <br>
-                <input type="checkbox" name="familyFriendly" name="familyFriendly">
-                <label for="familyFriendly"> Family Friendly</label>
+
+                <input type="checkbox" name="familyFriendly" value="yes"> 
+                <label for="familyFriendly"><h4>Family Friendly</h4></label>
                 <br>
                 <hr>
 
-                <input type="checkbox" name="friendsOnly" name="friendsOnly">
-                <label for="friendsOnly"> Friends Only</label>
+                <input type="checkbox" name="friendsOnly" value="yes">
+                <label for="friendsOnly"><h4>Friends Only</h4></label>
                 <br>
                 <hr>
 
                 
                 <br>              
                 
-                <label for="description" class = "mb-1"><h2>Description:</h2></label>
+                <label for="description" class = "mb-1"><h4>Description:</h4></label>
                 <br>
                 <textarea id="description" name="description" rows="8" cols="50" class = "mb-1">
-                    Enter Description here...
+Enter Description here...
                 </textarea>
                 
                 <br>
                 <br>
-
-                <input type="submit" class="btn btn-primary" value="Submit">
-           
+                <div class="input-group btn btn-primary">
+  	              <button type="submit" class="btn" name="submit">Submit</button>
+  	            </div>          
         </div>
         </div>
     </form>
