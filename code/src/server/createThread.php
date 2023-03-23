@@ -39,6 +39,7 @@ if (isset($_POST['submit'])){
   		array_push($errors, "There was an error creating the thread");
   	}
   }
+  header('location: ../server/login.php');
   }
 
 
