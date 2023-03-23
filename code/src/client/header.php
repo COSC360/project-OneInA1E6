@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_SESSION['userName'])){
    $userName = $_SESSION['userName'];
 echo '
@@ -81,4 +80,5 @@ else{
     </html>';
 }
 ?>
+<script src="../client/script/index.js"></script>
 

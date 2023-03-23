@@ -1,6 +1,6 @@
 
 function loginButton() {
-    location.href = "login.html";
+    location.href = "../server/login.php";
 }
 
 function like(x) {
