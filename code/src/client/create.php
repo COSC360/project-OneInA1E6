@@ -18,6 +18,7 @@
   <?php
   session_start();
   include "../client/header.php";
+  include ("../server/createThread.php")
   ?>
   
         <div class="container text-right">
@@ -31,19 +32,18 @@
         <div class="row p-1 mb-2 bg-white rounded border">
             
                 <label for="title" class = "mb-1"><h2>Thread Title</h2></label>
-                <br>
                 <input type="text" name = "title" class = "mb-1"/>
 
                 <Label for = "category" class = "mb-1">Category Name</Label>
                 <br>
                 <input type="text" name = "category" class = "mb-1"/>
                 <br>
-                <input type="checkbox" id="familyFriendly" name="familyFriendly">
+                <input type="checkbox" name="familyFriendly" name="familyFriendly">
                 <label for="familyFriendly"> Family Friendly</label>
                 <br>
                 <hr>
 
-                <input type="checkbox" id="friendsOnly" name="friendsOnly">
+                <input type="checkbox" name="friendsOnly" name="friendsOnly">
                 <label for="friendsOnly"> Friends Only</label>
                 <br>
                 <hr>

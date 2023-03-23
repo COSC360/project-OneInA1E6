@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // initializing variables
 include "../database/config.php";
@@ -7,15 +8,14 @@ $errors = array();
 include "../client/errors.php";
 
 // CHECK USER
-if (isset($_SESSION['loggedIn'])){
+if (isset($_SESSION['userName'])){
     $userName = $_SESSION['userName'];
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $familyFriendly = mysqli_real_escape_string($conn, $_POST['familyFriendly']);
     $friendsOnly = mysqli_real_escape_string($conn, $_POST['friendsOnly']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
 
-  if (empty($username)) {
+  if (empty($title)) {
   	array_push($errors, "Thread Title is required");
   }
   if (empty($category)) {
@@ -28,7 +28,7 @@ if (isset($_SESSION['loggedIn'])){
   if (count($errors) == 0) {
   	
     $query = "INSERT INTO threads (userName, title, category, familyFriendly, friendsOnly, description) 
-  			  VALUES('$userName', $title, '$category', '$familyFriendly', '$firstname', '$lastname')";
+  			  VALUES('$userName', $title, '$category', '$familyFriendly', '$friendsOnly', '$description')";
   	mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  header('location: ../client/index.php');
@@ -37,6 +37,6 @@ if (isset($_SESSION['loggedIn'])){
   	}
   }
 }
-header('location: ../server/login.php');
+// header('location: ../server/login.php');
 
 ?>
