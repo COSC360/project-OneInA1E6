@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['userName'])){
+if(isset($_SESSION['loggedIn'])){
    $userName = $_SESSION['userName'];
 echo '
     <!DOCTYPE html>
@@ -41,6 +41,9 @@ echo '
                 echo'<div class="col-md-3 text-end">
                 Welcome back ' . $userName . ' </div>' ;            
             echo'
+                <div class = "text-end">
+                    <button> <a href="logout.php"> LogOut </a> </button>
+                </div>
             </header>
         </div>
     </div>
