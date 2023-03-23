@@ -1,6 +1,11 @@
 <?php
 session_start();
-include "../client/header.php";
+    include "../client/header.php";
+    include "../database/config.php";
+
+    $sql = "SELECT * FROM threads";
+
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -23,26 +28,34 @@ include "../client/header.php";
   <div class= "container sticky-top rounded-3">
   <div class="container text-center">
     <div class="row p-1 mb-2 bg-white rounded border">
-      <div class="col-1">
-        <i class="bi-heart" onclick="like(this)"></i>
-      </div>
-      <div class="col-8">
-        <a href="#" class="text-decoration-none">Example post title</a>
-      </div>
-      <div class="col-3">
-        <a href="#" class="text-decoration-none text-muted">example user name</a>
-      </div>
-    </div>
-    <div class="row p-1 mb-2 bg-white rounded border">
-      <div class="col">
-        <i class="bi-heart" onclick="like(this)"></i>
-      </div>
-      <div class="col-8">
-        <a href="#" class="text-decoration-none">Example Second post title</a>
-      </div>
-      <div class="col-3">
-        <a href="#" class="text-decoration-none text-muted">Other user name</a>
-      </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Family Friendly</th>
+          <th>Friends Only</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <?php
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+        ?>
+                    <tr>
+                    <td><?php echo $row['userName']; ?></td>
+                    <td><?php echo $row['title']; ?></td>
+                    <td><?php echo $row['category']; ?></td>
+                    <td><?php echo $row['familyFriendly']; ?></td>
+                    <td><?php echo $row['friendsOnly']; ?> </td>
+                    </tr>                       
+        <?php
+          }
+        }
+        ?>                
+      </tbody>
+    </table>
     </div>
   </div>
 </div>

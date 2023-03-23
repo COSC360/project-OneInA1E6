@@ -1,7 +1,7 @@
 <?php
     include "../database/config.php";
 
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT * FROM threads";
 
     $result = $conn->query($sql);
 
@@ -60,11 +60,11 @@
 
                     <td><?php echo $row['id']; ?></td>
 
-                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['userName']; ?></td>
 
-                    <td><?php echo $row['firstName']; ?></td>
+                    <td><?php echo $row['title']; ?></td>
 
-                    <td><?php echo $row['lastName']; ?></td>
+                    <td><?php echo $row['category']; ?></td>
 
                     <td><a class="btn btn-info" href="updateUser.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
 
