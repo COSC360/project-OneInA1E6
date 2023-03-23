@@ -2,6 +2,9 @@
 function loginButton() {
     location.href = "../server/login.php";
 }
+function registerButton() {
+    location.href = "../server/register.php";
+}
 
 function like(x) {
     // toggles both to swap between

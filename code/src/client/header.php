@@ -71,7 +71,7 @@ else{
             </ul>
             <div class="col-md-3 text-end">
                     <button type="button" class="btn btn-outline-warning text-black me-2" onclick="loginButton()">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+                    <button type="button" class="btn btn-outline-warning text-black me-2" onclick="registerButton()">Register</button>
                     </div>
             </header>
         </div>
