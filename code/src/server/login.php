@@ -20,7 +20,7 @@ include('registerUser.php')
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration system PHP and MySQL</title>
+  <title>JEMS-EH Registration Page</title>
 </head>
 <body>
   <div class="header">

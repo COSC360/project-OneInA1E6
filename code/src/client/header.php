@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if(isset($_SESSION['userName'])){
    $userName = $_SESSION['userName'];
 echo '
@@ -24,12 +26,18 @@ echo '
                 <a href="#" class="nav-link active bg-warning text-black">Hot</a>
                 </li>
                 <li class="nav-item">
-                <a href="#" class="nav-link text-black">New</a>
+                <a href="#" class="nav-link active bg-warning text-black">New</a>
                 </li>
                 <li class="nav-item">
-                <a href="#" class="nav-link text-black disabled">liked</a>
+                <a href="#" class="nav-link active bg-warning text-black">liked</a>
+                </li>
+                <li class="nav-item">
+                <a href="../client/create.php" class="nav-link active bg-warning text-black">Create New Thread</a>
                 </li>
             </ul>';
+            
+
+
                 echo'<div class="col-md-3 text-end">
                 Welcome back ' . $userName . ' </div>' ;            
             echo'
@@ -54,8 +62,7 @@ else{
     <div class= "container sticky-top rounded-3">
     <div class="container sticky-top bg-white rounded-3">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
-            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
-                <!-- logo -->
+            <a href="../client/index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
                 <span class="fs-4 p-1 rounded-2 bg-warning">JEMS-EH</span>
             </a>
             <ul class="nav nav-pills">
@@ -64,9 +71,6 @@ else{
                 </li>
                 <li class="nav-item">
                 <a href="#" class="nav-link text-black">New</a>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link text-black disabled">liked</a>
                 </li>
             </ul>
             <div class="col-md-3 text-end">
