@@ -18,6 +18,7 @@ if (isset($_POST['submit'])){
     $friendsOnly = mysqli_real_escape_string($conn, $_POST['friendsOnly']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
 
+
   if (empty($title)) {
   	array_push($errors, "Thread Title is required");
   }
@@ -26,6 +27,12 @@ if (isset($_POST['submit'])){
   }
   if (empty($description)) {
     array_push($errors, "Description is required");
+  }
+  if (empty($familyFriendly)) {
+    $familyFriendly = 'no';
+  }
+  if (empty($friendsOnly)) {
+    $friendsOnly = 'no';
   }
 
   if (count($errors) == 0) {
@@ -38,8 +45,10 @@ if (isset($_POST['submit'])){
   	}else {
   		array_push($errors, "There was an error creating the thread");
   	}
+  }else{
+    header('location: ../server/login.php');
   }
-  header('location: ../server/login.php');
+  
   }
 
 

@@ -18,9 +18,13 @@ echo '
     <div class="container sticky-top bg-white rounded-3">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
             <a href="../client/index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
-                <!-- logo -->
                 <span class="fs-4 p-1 rounded-2 bg-warning">JEMS-EH</span>
             </a>
+             <div>
+                <button> <a href="profile.php"> View my Profile </a> </button>
+            </div>
+
+                
             <ul class="nav nav-pills">
                 <li class="nav-item">
                 <a href="#" class="nav-link active bg-warning text-black">Hot</a>
@@ -40,7 +44,7 @@ echo '
 
                 echo'<div class="col-md-3 text-end">
                 Welcome back ' . $userName . ' </div>' ;            
-            echo'
+                echo'
                 <div class = "text-end">
                     <button> <a href="logout.php"> LogOut </a> </button>
                 </div>
