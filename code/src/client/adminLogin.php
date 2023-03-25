@@ -1,60 +1,49 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../client/css/login.css" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        
+<?php
+include "../client/header.php";
+include('../server/adminLogin.php') 
+?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JEMS-EH Admin Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-      <link rel="stylesheet" href="../css/login.css" />
-  </head>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-  integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-  crossorigin="anonymous"></script>
-
+<head>
+  <title>JEMS-EH Login Page</title>
+</head>
 <body>
-  <div class="container sticky-top bg-white rounded-3">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom ">
-      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark">
-        <!-- logo -->
-        <span class="fs-4 p-1 rounded-2 bg-warning">JEMS-EH</span>
-      </a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a href="#" class="nav-link active bg-warning text-black">Hot</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link text-black">New</a>
-        </li>
-      </ul>
-    </header>
+  <div class="header">
+  	<h2>Login</h2>
   </div>
-  <main class="form-signin w-50 m-auto align-items-center ">    
-    <form>
-      <h1 class="h3 mb-3 fw-normal">Admin Login</h1>
-  
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="adminUsername">
-        <label for="floatingInput">Admin Access Code</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    </form>
-  </main>
-  <footer>
-   <div class="footer-related">
-      <h2>Terms and Conditions </h2>
-      <div>
-        You can review the terms and conditions <a href="#">here</a>
-      </div>
-   </div>
-   <div class="footer-section">
-    <h2>About Us</h2>
-    <p>This is a basic representation of Jems-Eh Login Page</p>
-    <p>&copy; Copyright 2023 Company X
-    </div>
-</footer>
+	 
+  <form method="post" action="adminLogin.php">
+  	<?php include('../client/errors.php'); ?>
+  	<div class="input-group">
+  		<label>Username</label>
+  		<input type="text" name="adminKey" >
+  	</div>
+  	<div class="input-group">
+  		<label>Password</label>
+  		<input type="password" name="password">
+  	</div>
+  	<div class="input-group">
+  		<button type="submit" class="btn" name="login_user">Login</button>
+  	</div>s
+  </form>
 </body>
+</html>
+
+<?php
+include "../client/footer.php";
+?>

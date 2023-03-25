@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
     $mail->SMTPAuth = true;
     $mail->Username = 'jemseh.noreply@gmail.com'; //Your Gmail
     $mail->Password = 'ysdvkfifmltvmkuv'; //Your gmail password
-    $mail->SMTPSecure = 'ssl';
+    $mail->SMTPSSecure = 'ssl';
     $mail->Port = 465;
 
     $mail->setFrom('jemseh.noreply@gmail.com');
