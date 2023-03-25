@@ -18,7 +18,7 @@
   <?php
 
   include "../client/header.php";
-  include ("../server/createThread.php")
+  include ("../server/createThread.php");
   ?>
   
         <div class="container text-right">

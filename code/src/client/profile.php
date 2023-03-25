@@ -61,6 +61,7 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
             </tbody>
             </table>
             </div>
+            <button ><a href="editProfile.php">Edit Profile Information</a></button>
         </div>
         </div>
         </body>
