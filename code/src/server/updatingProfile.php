@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         if ($password_1 != $password_2) {
             array_push($errors, "The two passwords do not match");
         }
-        $sqlemail = "SELECT * FROM users WHERE email='$email';";
+        $sqlemail = "SELECT * FROM users WHERE email='$email'";
         $query = mysqli_query($conn, $sqlemail);
         
         if (mysqli_num_rows($query) > 0) {

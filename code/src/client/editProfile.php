@@ -59,7 +59,7 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                             <br>
                         
                             <br>
-                            <div class="input-group btn btn-primary">
+                            <div class="input-group btn">
                             <button type="submit" class="btn" name="submit">Submit</button>
                             </div>          
                     </div>
