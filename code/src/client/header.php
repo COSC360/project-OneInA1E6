@@ -46,7 +46,7 @@ echo '
                 Welcome back ' . $userName . ' </div>' ;            
                 echo'
                 <div class = "text-end">
-                    <button> <a href="logout.php"> LogOut </a> </button>
+                    <button> <a href="../client/logout.php"> LogOut </a> </button>
                 </div>
             </header>
         </div>
