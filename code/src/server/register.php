@@ -29,7 +29,7 @@ include('registerUser.php')
   </div>
 	
   <div class="container d-flex justify-content-center">
-	<form method="post" action="register.php" enctype="multipart/form-data">
+	<form name = "mainForm" method="post" action="register.php" enctype="multipart/form-data">
 		<?php include('../client/errors.php'); ?>
 		<div class="input-group mb-2">
 		<input type="text" name="userName" value="<?php echo $username; ?>" placeholder="Username">
