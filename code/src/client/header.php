@@ -32,13 +32,13 @@ echo '
                     
                 <ul class="navbar-nav nav-pills me-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                    <a href="#" class="btn btn-outline-warning text-black mx-1">Hot</a>
+                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">Hot</a>
                     </li>
                     <li class="nav-item">
-                    <a href="#" class="btn btn-outline-warning text-black mx-1">New</a>
+                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">New</a>
                     </li>
                     <li class="nav-item">
-                    <a href="#" class="btn btn-outline-warning text-black mx-1">liked</a>
+                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">liked</a>
                     </li>
                     <li class="nav-item">
                     <a href="../client/create.php" class="btn btn-outline-warning text-black mx-1">Create New Thread</a>
