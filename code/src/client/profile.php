@@ -5,10 +5,10 @@ include "../database/config.php";
 if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
         $username = $_SESSION['userName'];
         $sql = "SELECT * FROM users WHERE userName='$username'";
-        
-
         $result = $conn->query($sql);
 
+        $sql2 = "SELECT * FROM threads WHERE userName='$username'";
+        $result2 = $conn->query($sql2);
 
         ?>
         <!DOCTYPE html>
@@ -25,9 +25,8 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
         <link rel="stylesheet" href="./css/register.css" />
 
         </head>
-
-
         <body>
+
         <div class= "container sticky-top rounded-3">
         <div class="container text-center">
             <h1>Your Account </h1>
@@ -63,6 +62,42 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
             </div>
             <button ><a href="editProfile.php">Edit Profile Information</a></button>
         </div>
+        </div>
+
+        <div class= "container sticky-top rounded-3">
+        <div class="container text-center">
+            <h1>Your Threads </h1>
+            <div class="row p-1 mb-2 bg-white rounded border">
+            <table class="table">
+            <thead>
+                <tr>
+                <th>id</th>
+                <th>Username</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <?php
+                    if ($result2->num_rows > 0) {
+                    while ($row = $result2->fetch_assoc()) {
+                ?>
+                            <tr>
+                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $row['userName']; ?></td>
+                            <td><?php echo $row['title']; ?></td>
+                            <td><?php echo $row['category']; ?></td>
+                            <td></a>&nbsp;<a class="btn btn-danger" href="deleteThread.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+
+                            </tr>             
+                            </tr>                       
+                <?php
+                }
+                }
+                ?>                
+            </tbody>
+            </table>
         </div>
         </body>
 

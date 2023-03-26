@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
             $stmt->bind_param('sssss', $email, $firstname, $lastname, $password_1, $username);
             $stmt->execute();
             if ($stmt->error) {
-                echo "FAILURE!!! " . $stmt->error;
+                echo "please try again " . $stmt->error;
               }
             else{
                 header('location: ../client/index.php');

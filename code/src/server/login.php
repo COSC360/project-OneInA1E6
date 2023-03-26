@@ -41,6 +41,9 @@ include('registerUser.php')
       <p>
         Not yet a member? <a href="register.php">Sign up</a>
       </p>
+      <p>
+        Admin <a href="../client/adminLogin.php">Log In</a>
+      </p>
     </form>
   </div>
 </body>

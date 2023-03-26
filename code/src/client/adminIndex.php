@@ -34,8 +34,6 @@ session_start();
           <th>User</th>
           <th>Title</th>
           <th>Category</th>
-          <th>Family Friendly</th>
-          <th>Friends Only</th>
         </tr>
       </thead>
       <tbody> 
@@ -47,8 +45,6 @@ session_start();
                     <td><?php echo $row['userName']; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['category']; ?></td>
-                    <td><?php echo $row['familyFriendly']; ?></td>
-                    <td><?php echo $row['friendsOnly']; ?> </td>
                     </tr>                       
         <?php
           }
