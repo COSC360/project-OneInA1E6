@@ -39,13 +39,17 @@
                 <input type="text" name = "category" class = "mb-1"/>
                 <br>
 
-                <input type="checkbox" name="familyFriendly" value="yes"> 
-                <label for="familyFriendly"><h4>Family Friendly</h4></label>
+                <div>
+                  <label class="me-3" for="familyFriendly"><h4>Family Friendly</h4></label>
+                  <input type="checkbox" name="familyFriendly" value="yes"> 
+                </div>
                 <br>
                 <hr>
 
-                <input type="checkbox" name="friendsOnly" value="yes">
-                <label for="friendsOnly"><h4>Friends Only</h4></label>
+                <div>
+                  <label class="me-3" for="friendsOnly"><h4>Friends Only</h4></label>
+                  <input type="checkbox" name="friendsOnly" value="yes">
+                </div>
                 <br>
                 <hr>
 
