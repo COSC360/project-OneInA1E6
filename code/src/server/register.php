@@ -29,7 +29,7 @@ include('registerUser.php')
   </div>
 	
   <div class="container d-flex justify-content-center">
-	<form method="post" action="register.php">
+	<form method="post" action="register.php" enctype="multipart/form-data">
 		<?php include('../client/errors.php'); ?>
 		<div class="input-group mb-2">
 		<input type="text" name="userName" value="<?php echo $username; ?>" placeholder="Username">
@@ -50,8 +50,12 @@ include('registerUser.php')
 		<input type="password" name="password_2" placeholder="Confirm Password">
 		</div>
 		<div class="input-group mb-2">
+		<input type="file" name="image" placeholder="Profile Picture">
+		</div>
+		<div class="input-group mb-2">
 		<button type="submit" class="btn btn-primary" name="submit">Register</button>
 		</div>
+
 		<p>
 			Already a member? <a href="login.php">Sign in</a>
 		</p>

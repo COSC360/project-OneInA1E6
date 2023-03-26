@@ -5,6 +5,7 @@ session_start();
 include "../database/config.php";
 $username = "";
 $email    = "";
+$image = "";
 $errors = array(); 
 include "../client/errors.php";
 use PHPMailer\PHPMailer\PHPMailer;
@@ -23,6 +24,7 @@ if (isset($_POST['submit'])) {
   $lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
   $password_1 = mysqli_real_escape_string($conn, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($conn, $_POST['password_2']);
+
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -51,9 +53,60 @@ if (isset($_POST['submit'])) {
     }
   }
 
+   ///////////////////////Images
+          $target_dir = "../client/images/";
+          $target_file = $target_dir . basename($_FILES["image"]["name"]);
+          $uploadOk = 1;
+          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+          
+          // Check if image file is a actual image or fake image
+          if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if($check !== false) {
+              echo "File is an image - " . $check["mime"] . ".";
+              $uploadOk = 1;
+            } else {
+              echo "File is not an image.";
+              $uploadOk = 0;
+            }
+          }
+          
+          // Check if file already exists
+          if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+          }
+          
+          // Check file size
+          if ($_FILES["image"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+          }
+          
+          // Allow certain file formats
+          if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+          }
+          
+          // Check if $uploadOk is set to 0 by an error
+          if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+          // if everything is ok, try to upload file
+          }
+
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$query = "INSERT INTO users (userName, email, password, firstName, lastName) VALUES('$username', '$email', '$password_1', '$firstname', '$lastname')";
+
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+      echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
+
+      ////////////////////////////
+
+  	$query = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES('$username', '$email', '$password_1', '$firstname', '$lastname', '$target_file')";
   	mysqli_query($conn, $query);
   	$_SESSION['userName'] = $username;
   	$_SESSION['loggedIn'] = "true";
@@ -63,8 +116,8 @@ if (isset($_POST['submit'])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'jemseh.noreply@gmail.com'; //Your Gmail
-    $mail->Password = 'ysdvkfifmltvmkuv'; //Your gmail password
+    $mail->Username = 'jemseh.noreply@gmail.com'; 
+    $mail->Password = 'ysdvkfifmltvmkuv'; 
     $mail->SMTPSSecure = 'ssl';
     $mail->Port = 465;
 
@@ -75,7 +128,7 @@ if (isset($_POST['submit'])) {
 
     $mail->Subject = "Welcome to Jems-Eh";
     $mail->Body = "Thank you for signing up with Jems-Eh! Your account has successfully been created!";
-    $mail->send();
+    // $mail->send();
 
 
 

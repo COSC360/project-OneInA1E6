@@ -71,7 +71,6 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
             <table class="table">
             <thead>
                 <tr>
-                <th>id</th>
                 <th>Username</th>
                 <th>Title</th>
                 <th>Category</th>
@@ -84,13 +83,10 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                     while ($row = $result2->fetch_assoc()) {
                 ?>
                             <tr>
-                            <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['userName']; ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['category']; ?></td>
-                            <td></a>&nbsp;<a class="btn btn-danger" href="deleteThread.php?id=<?php echo $row['id']; ?>">Delete</a></td>
-
-                            </tr>             
+                            <td></a>&nbsp;<a class="btn btn-danger" href="deleteThread.php?id=<?php echo $row['id']; ?>">Delete</a></td>           
                             </tr>                       
                 <?php
                 }
