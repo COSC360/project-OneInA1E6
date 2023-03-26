@@ -23,27 +23,26 @@ include('registerUser.php')
   <title>JEMS-EH Registration Page</title>
 </head>
 <body>
-  <div class="header">
+  <div class="container header d-flex justify-content-center">
   	<h2>Login</h2>
   </div>
-	 
-  <form method="post" action="login.php">
-  	<?php include('../client/errors.php'); ?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="userName" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
-  </form>
+	<div class="container d-flex justify-content-center">
+    <form method="post" action="login.php">
+      <?php include('../client/errors.php'); ?>
+      <div class="input-group mb-1">
+        <input type="text" name="userName" placeholder="Username"/>
+      </div>
+      <div class="input-group mb-1">
+        <input type="password" name="password" placeholder="Password"/>
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn btn-primary" name="login_user">Login</button>
+      </div>
+      <p>
+        Not yet a member? <a href="register.php">Sign up</a>
+      </p>
+    </form>
+  </div>
 </body>
 </html>
 

@@ -54,9 +54,8 @@
                 
                 <label for="description" class = "mb-1"><h4>Description:</h4></label>
                 <br>
-                <textarea id="description" name="description" rows="8" cols="50" class = "mb-1">
-Enter Description here...
-                </textarea>
+                <textarea id="description" name="description" rows="8" cols="50" class = "mb-1" 
+                  placeholder="Enter description here..."></textarea>
                 
                 <br>
                 <br>

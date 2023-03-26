@@ -24,43 +24,39 @@ include('registerUser.php')
   <title>JEMS-EH Register Page</title>
 </head>
 <body>
-  <div class="header">
+  <div class="container header d-flex justify-content-center">
   	<h2>Register</h2>
   </div>
 	
-  <form method="post" action="register.php">
-  	<?php include('../client/errors.php'); ?>
-  	<div class="input-group">
-  	  <label>Username</label>
-  	  <input type="text" name="userName" value="<?php echo $userName; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Email</label>
-  	  <input type="email" name="email" value="<?php echo $email; ?>">
-  	</div>
-      <div class="input-group">
-  	  <label>First Name</label>
-  	  <input type="text" name="firstName">
-  	</div>
-      <div class="input-group">
-  	  <label>Last Name</label>
-  	  <input type="text" name="lastName">
-  	</div>
-  	<div class="input-group">
-  	  <label>Password</label>
-  	  <input type="password" name="password_1">
-  	</div>
-  	<div class="input-group">
-  	  <label>Confirm password</label>
-  	  <input type="password" name="password_2">
-  	</div>
-  	<div class="input-group">
-  	  <button type="submit" class="btn" name="submit">Register</button>
-  	</div>
-  	<p>
-  		Already a member? <a href="login.php">Sign in</a>
-  	</p>
-  </form>
+  <div class="container d-flex justify-content-center">
+	<form method="post" action="register.php">
+		<?php include('../client/errors.php'); ?>
+		<div class="input-group mb-2">
+		<input type="text" name="userName" value="<?php echo $username; ?>" placeholder="Username">
+		</div>
+		<div class="input-group mb-2">
+		<input type="email" name="email" value="<?php echo $email; ?>" placeholder="Email Address">
+		</div>
+		<div class="input-group mb-2">
+		<input type="text" name="firstName" placeholder="First Name">
+		</div>
+		<div class="input-group mb-2">
+		<input type="text" name="lastName" placeholder="Last Name">
+		</div>
+		<div class="input-group mb-2">
+		<input type="password" name="password_1" placeholder="Password">
+		</div>
+		<div class="input-group mb-2">
+		<input type="password" name="password_2" placeholder="Confirm Password">
+		</div>
+		<div class="input-group mb-2">
+		<button type="submit" class="btn btn-primary" name="submit">Register</button>
+		</div>
+		<p>
+			Already a member? <a href="login.php">Sign in</a>
+		</p>
+	</form>
+  </div>
 </body>
 </html>
 
