@@ -15,12 +15,12 @@
         
 <?php
 include "../client/header.php";
-include('../server/adminLogin.php') 
+include('../server/adminValid.php') 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JEMS-EH Login Page</title>
+  <title>JEMS-EH Admin Login Page</title>
 </head>
 <body>
   <div class="header">
@@ -30,7 +30,7 @@ include('../server/adminLogin.php')
   <form method="post" action="adminLogin.php">
   	<?php include('../client/errors.php'); ?>
   	<div class="input-group">
-  		<label>Username</label>
+  		<label>Admin Key</label>
   		<input type="text" name="adminKey" >
   	</div>
   	<div class="input-group">
@@ -38,8 +38,8 @@ include('../server/adminLogin.php')
   		<input type="password" name="password">
   	</div>
   	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>s
+  		<button type="submit" class="btn" name="adminLog">Login</button>
+  	</div>
   </form>
 </body>
 </html>
