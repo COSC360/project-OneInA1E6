@@ -78,8 +78,11 @@ if (isset($_POST['submit'])) {
       echo "Sorry, there was an error uploading your file.";
     }
 
-  	$query = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES('$username', '$email', '$password_1', '$firstname', '$lastname', '$target_file')";
-  	mysqli_query($conn, $query);
+    $sql = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES(?, ?, ?, ?, ?, ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssss', $username, $email, $firstname, $lastname, $password_1, $target_file);
+    $stmt->execute();
+
   	$_SESSION['userName'] = $username;
   	$_SESSION['loggedIn'] = "true";
     

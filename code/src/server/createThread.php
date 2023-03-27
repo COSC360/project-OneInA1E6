@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // initializing variables
 include "../database/config.php";
@@ -37,9 +36,10 @@ if (isset($_POST['submit'])){
 
   if (count($errors) == 0) {
   	
-    $query = "INSERT INTO threads (userName, title, category, familyFriendly, friendsOnly, description) VALUES('$userName', '$title', '$category', '$familyFriendly', '$friendsOnly', '$description')";
-
-    mysqli_query($conn, $query);
+    $sql = "INSERT INTO threads (userName, title, category, familyFriendly, friendsOnly, description) VALUES(?,?,?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssss', $userName, $title, $category, $familyFriendly, $friendsOnly, $description);
+    $stmt->execute();
 
   	  header('location: ../client/index.php');
   	}else {

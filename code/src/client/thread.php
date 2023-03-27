@@ -4,10 +4,10 @@
     include "../database/config.php";
     include "../server/createComment.php";
     $threadID = $_GET['ID'];
-    $sql = "SELECT * FROM threads WHERE id = '$threadID'";
+    $sql = "SELECT * FROM threads WHERE id = '$threadID';";
     $result = $conn->query($sql);
 
-    $commentsAll = "SELECT * FROM comments";
+    $commentsAll = "SELECT * FROM comments WHERE threadId = '$threadID';";
     $commentResults = $conn->query($commentsAll);
 
 ?>
@@ -99,7 +99,7 @@
                             <button class="btn btn-warning text-center col-2 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#newComment2">Reply</button>
                             <div class="collapse width" id="newComment2">
                             <form action="../server/replyComment.php?id=<?php echo $row['id']; ?>&threadID=<?php echo $row['threadID'];?>" method="POST">
-                            <textarea class="col-12" placeholder="Your Reply here..." id="content" name="content"></textarea>
+                                <textarea class="col-12" placeholder="Your Reply here..." id="content2" name="content2"></textarea>
   	                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
                             </div>

@@ -9,7 +9,7 @@ if(isset($_SESSION['loggedIn'])){
    $sql = "SELECT * FROM users  WHERE userName = '$userName';";
 
    $result = $conn->query($sql);
-
+    $image = '';
 
    if ($result->num_rows > 0) {
        $info = $result->fetch_assoc();  
@@ -59,7 +59,7 @@ echo '
                     <a href="../client/create.php" class="btn btn-outline-warning text-black mx-1">Create New Thread</a>
                     </li>
                 </ul>
-                <div class="mt-2 text-end"> Welcome back ' . $userName . ' <img src =' . $image . ' width =50 height =50 ></div>
+                <div class="mt-2 text-end"> Welcome back ' . $userName . ' <img src ="'. $image . '" width =50 height =50 ></div>
 
                 <div class = "text-end">
                     <button class="btn btn-outline-primary mx-1"> <a href="../client/logout.php"> LogOut </a> </button>
