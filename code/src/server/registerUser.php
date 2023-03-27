@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
   if (empty($firstname)) { array_push($errors, "First is required"); }
   if (empty($lastname)) { array_push($errors, "Last Name is required"); }
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	  array_push($errors, "The two passwords do not match");
   }
      
 
@@ -53,13 +53,9 @@ if (isset($_POST['submit'])) {
       array_push($errors, "email already exists");
     }
   }
-
-          
-          // Check if image file is a actual image or fake image
-  if(isset($_POST["submit"])) {   
+ 
     $target_dir = "../client/images/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     if($_FILES["image"]["error"] == 4) {
       array_push($errors, "You Need to Upload a Profile Picture");
@@ -114,7 +110,7 @@ if (isset($_POST['submit'])) {
   	header('location: ../client/index.php');
   }
 }
-}
+
 // LOGIN USER
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($conn, $_POST['userName']);

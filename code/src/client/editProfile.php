@@ -33,7 +33,7 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
             
             <h1>Edit Your Account </h1>
             <div class="row p-1 mb-2 bg-white rounded border">
-            <form action="editProfile.php" method="POST">
+            <form action="editProfile.php" method="POST" enctype="multipart/form-data">
                 <?php include('../client/errors.php'); ?>
                     <div class="form-group text-right">
                     <div class="row p-1 mb-2 bg-white rounded border">
@@ -57,7 +57,10 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                             <label for="password2"  class = "mb-1"><h4>Re-enter your new Password</h4></label>
                             <input type="text" name="password2" class = "mb-1">
                             <br>
-                        
+                            <label for="image"  class = "mb-1"><h4>Profile Picture</h4></label>
+                            <input type="file" name="image" class = "mb-1">
+                            
+                                            
                             <br>
                             <div class="input-group btn">
                             <button type="submit" class="btn" name="submit">Submit</button>
