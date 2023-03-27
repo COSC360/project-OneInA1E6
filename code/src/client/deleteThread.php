@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
     include "../database/config.php";
 
     if(isset($_GET['id']) & isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == 'true'){

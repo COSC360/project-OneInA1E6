@@ -3,7 +3,7 @@
     <!DOCTYPE html>
     <html lang="en">
 
-    <footer>
+    <footer class="footer  fixed-bottom mt-auto py-3">
     <div class="footer-related">
         <h2>Terms and Conditions </h2>
         <div>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
     session_destroy();
 }
