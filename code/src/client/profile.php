@@ -39,6 +39,7 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Password</th>
+                <th>Profile Picture</th>
                 </tr>
             </thead>
             <tbody> 
@@ -52,6 +53,7 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                             <td><?php echo $row['firstName']; ?></td>
                             <td><?php echo $row['lastName']; ?></td>
                             <td><?php echo $row['password']; ?></td>
+                            <td><img src= '<?php echo $row['image']; ?>' width="100" height="100"></td>
                             </tr>                       
                 <?php
                 }

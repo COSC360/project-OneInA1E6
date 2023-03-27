@@ -54,15 +54,13 @@ if (isset($_POST['submit'])) {
     }
   }
 
-
-  $target_dir = "../client/images/";
-  $target_file = $target_dir . basename($_FILES["image"]["name"]);
-  $uploadOk = 1;
-  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
           
           // Check if image file is a actual image or fake image
   if(isset($_POST["submit"])) {   
-    
+    $target_dir = "../client/images/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     if($_FILES["image"]["error"] == 4) {
       array_push($errors, "You Need to Upload a Profile Picture");
     }else{
@@ -109,14 +107,14 @@ if (isset($_POST['submit'])) {
 
     $mail->Subject = "Welcome to Jems-Eh";
     $mail->Body = "Thank you for signing up with Jems-Eh! Your account has successfully been created!";
-    // $mail->send();
+    $mail->send();
 
 
 
   	header('location: ../client/index.php');
   }
 }
-
+}
 // LOGIN USER
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($conn, $_POST['userName']);
@@ -141,6 +139,6 @@ if (isset($_POST['login_user'])) {
   	}
   }
 }
-}
+
 
 ?>
