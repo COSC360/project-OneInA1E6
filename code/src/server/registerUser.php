@@ -11,6 +11,7 @@ $email    = "";
 $image = "";
 $errors = array(); 
 include "../client/errors.php";
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -74,13 +75,6 @@ if (isset($_POST['submit'])) {
     }
     
   if (count($errors) == 0) {
-
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-      echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
-    } else {
-      echo "Sorry, there was an error uploading your file.";
-    }
-
     $sql = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES(?, ?, ?, ?, ?, ?);";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ssssss', $username, $email, $firstname, $lastname, $password_1, $target_file);
@@ -94,9 +88,9 @@ if (isset($_POST['submit'])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'jemseh.noreply@gmail.com'; 
-    $mail->Password = 'ysdvkfifmltvmkuv'; 
-    $mail->SMTPSSecure = 'ssl';
+    $mail->Username = 'jemseh.noreply@gmail.com'; //Your Gmail
+    $mail->Password = 'ysdvkfifmltvmkuv'; //Your gmail password
+    $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
 
     $mail->setFrom('jemseh.noreply@gmail.com');
@@ -108,6 +102,12 @@ if (isset($_POST['submit'])) {
     $mail->Body = "Thank you for signing up with Jems-Eh! Your account has successfully been created!";
     $mail->send();
 
+
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+      echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
 
 
   	header('location: ../client/index.php');
@@ -127,7 +127,7 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$query = "SELECT * FROM users WHERE userName='$username' AND password='$password'";
+  	$query = "SELECT * FROM users WHERE userName='$username' AND password='$password';";
   	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['userName'] = $username;
