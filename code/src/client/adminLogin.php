@@ -23,24 +23,23 @@ include('../server/adminValid.php')
   <title>JEMS-EH Admin Login Page</title>
 </head>
 <body>
-  <div class="header">
+  <div class="container header d-flex justify-content-center">
   	<h2>Login</h2>
   </div>
-	 
-  <form method="post" action="adminLogin.php">
-  	<?php include('../client/errors.php'); ?>
-  	<div class="input-group">
-  		<label>Admin Key</label>
-  		<input type="text" name="adminKey" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="adminLog">Login</button>
-  	</div>
-  </form>
+	<div class="container d-flex justify-content-center">
+    <form method="post" action="adminLogin.php">
+      <?php include('../client/errors.php'); ?>
+      <div class="input-group mb-1">
+        <input type="text" name="adminKey" placeholder="Admin Key">
+      </div>
+      <div class="input-group mb-1">
+        <input type="password" name="password" placeholder="Password">
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn btn-primary" name="adminLog">Login</button>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
 
