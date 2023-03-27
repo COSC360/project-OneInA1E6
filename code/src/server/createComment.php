@@ -5,8 +5,6 @@ if(!isset($_SESSION))
 }
 // initializing variables
 include "../database/config.php";
-$username = "";
-$description = "";
 $errors = array(); 
 include "../client/errors.php";
 

@@ -70,7 +70,6 @@ if (isset($_POST['submit'])) {
         }
     }
     
-  // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
@@ -78,8 +77,6 @@ if (isset($_POST['submit'])) {
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
-
-      ////////////////////////////
 
   	$query = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES('$username', '$email', '$password_1', '$firstname', '$lastname', '$target_file')";
   	mysqli_query($conn, $query);

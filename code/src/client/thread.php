@@ -85,11 +85,26 @@
                     <tr>
                         <button class="btn" data-bs-toggle="collapse" data-bs-target="#comments">
                             <div>
-                                <p class="col-1 text-primary"><?php echo $row['username']; ?></p>
-                                <p class="col-12"><?php echo $row['content']; ?></p>
                                 
+                                <p class="col-1 text-primary"><?php echo $row['username']; ?></p>
+                                <p class="col-12"><?php echo $row['content']; ?></p>                                
                             </div>
                         </button>
+                        <?php
+                                    if($row['username'] == $_SESSION['userName']){?>
+                                        <a class="btn btn-danger" href="../server/deleteComment.php?id=<?php echo $row['id']; ?>&threadID=<?php echo $row['threadID']; ?>">Delete</a>          
+                                    <?php } ?>
+                        <?php if($row['username'] != $_SESSION['userName']){?>
+
+                            <button class="btn btn-warning text-center col-2 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#newComment2">Reply</button>
+                            <div class="collapse width" id="newComment2">
+                            <form action="../server/replyComment.php?id=<?php echo $row['id']; ?>&threadID=<?php echo $row['threadID'];?>" method="POST">
+                            <textarea class="col-12" placeholder="Your Reply here..." id="content" name="content"></textarea>
+  	                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                            </form>
+                            </div>
+         
+                        <?php } ?>
                     </tr>                       
                  <?php
                         }
