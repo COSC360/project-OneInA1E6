@@ -41,7 +41,7 @@ echo '
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <div>
-                    <button class="btn btn-outline-primary mx-1"> <a href="profile.php"> View my Profile </a> </button>
+                    <button class="btn btn-outline-primary mx-1"> <a href="../client/profile.php"> View my Profile </a> </button>
                 </div>
 
                     
