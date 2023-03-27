@@ -2,10 +2,14 @@
 
     include "../client/header.php";
     include "../database/config.php";
+    include "../server/createComment.php";
     $threadID = $_GET['ID'];
     $sql = "SELECT * FROM threads WHERE id = '$threadID'";
-
     $result = $conn->query($sql);
+
+    $commentsAll = "SELECT * FROM comments";
+    $commentResults = $conn->query($commentsAll);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,18 +61,40 @@
         </tbody>
         </table>
         <div> 
+            <span>Description: </span>
             <?php echo $thread['description']; ?>
         </div>
     </div>
     <div class="row p-1 mb-2 bg-white rounded border">
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <h3>Comments: </h3>
             </thead>
+            <button class="btn btn-warning col-2 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#newComment">Comment</button>
+            <div class="collapse width" id="newComment">
+                    <form action="thread.php?ID=<?php echo $thread['id'] ?>" method="POST">
+                        <textarea class="col-12" placeholder="Your comment here..." id="content" name="content"></textarea>
+  	                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    </form>
+                </div>
             <tbody>
-                <tr>
-                    
-                </tr>
+                <?php
+                    if ($commentResults->num_rows > 0) {
+                        while ($row = $commentResults->fetch_assoc()) {
+                ?>
+                    <tr>
+                        <button class="btn" data-bs-toggle="collapse" data-bs-target="#comments">
+                            <div>
+                                <p class="col-1 text-primary"><?php echo $row['username']; ?></p>
+                                <p class="col-12"><?php echo $row['content']; ?></p>
+                                
+                            </div>
+                        </button>
+                    </tr>                       
+                 <?php
+                        }
+                    }
+                ?> 
             </tbody>
         </table>
     </div>
