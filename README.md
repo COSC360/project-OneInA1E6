@@ -1,10 +1,6 @@
 # COSC 360
 COSC 360 Proposal
 
-# Team Member Selections 
-  - Tanner Wright
-  - Andrew Dunn
-
 ## Project Description and Requirements
 
   ### Description 
