@@ -50,9 +50,6 @@ echo '
                     <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">Hot</a>
                     </li>
                     <li class="nav-item">
-                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">New</a>
-                    </li>
-                    <li class="nav-item">
                     <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">liked</a>
                     </li>
                     <li class="nav-item">
@@ -64,7 +61,14 @@ echo '
                         echo '<li class ="nav-item">
                         <form method="GET" action="searchIndex.php">
                             <input type="text" name = "search" class = "m-1" placeholder="Search"/>
-                            <button type="submit" class="btn btn-light m-1" name="submitSearch">Submit</button> 
+                            <label for="filter">Search by:</label>
+                            <select name="filter" id="filter">
+                                <option value="title">Thread Title</option>
+                                <option value="userName">User</option>
+                                <option value="category">Category</option>
+                            </select>
+                            <button type="submit" class="btn btn-secondary m-1" name="submitSearch">Submit</button> 
+
                         <form>
                         </li>';
                     } 

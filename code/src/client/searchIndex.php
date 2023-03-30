@@ -1,20 +1,6 @@
 <?php
 
 include "../database/config.php";
-$searchQuery='';
-$result='';
-
-
-if (isset($_GET['submitSearch'])){
-    if(isset($_GET['search'])){
-
-        $searchQuery = mysqli_real_escape_string($conn, $_GET['search']);
-        $sql = "SELECT * FROM threads WHERE title LIKE '%$searchQuery%'";
-        $result = $conn->query($sql);
-        echo '<h2>'. $sql .'</h2>';
-    }
-
-}
 include "../client/header.php";
 ?>
 <head>
@@ -45,6 +31,23 @@ include "../client/header.php";
       </thead>
       <tbody> 
         <?php
+        if (isset($_GET['submitSearch'])){
+            if(isset($_GET['search'])){
+        
+                $searchQuery = mysqli_real_escape_string($conn, $_GET['search']);
+                $searchFilter = mysqli_real_escape_string($conn, $_GET['filter']);
+
+                if($searchFilter == "title"){
+                    $sql = "SELECT * FROM threads WHERE title LIKE '%$searchQuery%';";
+                }
+                else if($searchFilter == "category"){
+                    $sql = "SELECT * FROM threads WHERE category LIKE '%$searchQuery%';";
+                }else if($searchFilter == "userName"){
+                    $sql = "SELECT * FROM threads WHERE userName LIKE '%$searchQuery%';";
+                }
+
+                $result = $conn->query($sql);
+        
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
         ?>
@@ -56,18 +59,16 @@ include "../client/header.php";
                     <td><?php echo $row['friendsOnly']; ?> </td>
                     </tr>                       
         <?php
-          }
+            }
+            }else{
+                echo '<h2>Sorry there was no results for ' . $searchQuery . '</h2>';
+            }
+        }
+    }
           ?>               
       </tbody>
     </table>
     </div>
-    <?php
-     }
-        else{?>
-            <h2>There was no search results....</h2>
-            <?php
-            }
-        ?> 
   </div>
 </div>
 </body>
