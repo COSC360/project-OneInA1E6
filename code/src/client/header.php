@@ -115,6 +115,23 @@ else {
                     <li class="nav-item">
                     <a href="#" class="nav-link text-black">New</a>
                     </li>
+                    ';
+                    if( basename($_SERVER['PHP_SELF'], '.php') == 'index' || basename($_SERVER['PHP_SELF'], '.php') == 'searchIndex') {
+                        echo '<li class ="nav-item">
+                        <form method="GET" action="searchIndex.php">
+                            <input type="text" name = "search" class = "m-1" placeholder="Search"/>
+                            <label for="filter">Search by:</label>
+                            <select name="filter" id="filter">
+                                <option value="title">Thread Title</option>
+                                <option value="userName">User</option>
+                                <option value="category">Category</option>
+                            </select>
+                            <button type="submit" class="btn btn-secondary m-1" name="submitSearch">Submit</button> 
+
+                        <form>
+                        </li>';
+                    } 
+                    echo '
                 </ul>
                 <div class="col-md-5 text-end">
                     <button type="button" class="btn btn-outline-warning text-black me-2" onclick="loginButton()">Login</button>
