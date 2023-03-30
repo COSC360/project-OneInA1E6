@@ -16,8 +16,8 @@
   <div class= "container sticky-top rounded-3">
 
   <?php
-
-  include "../client/header.php";
+  
+   include "../client/header.php";
   include ("../server/createThread.php");
   ?>
   

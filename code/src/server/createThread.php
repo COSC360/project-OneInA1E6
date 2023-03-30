@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 // initializing variables
 include "../database/config.php";
 $username = "";

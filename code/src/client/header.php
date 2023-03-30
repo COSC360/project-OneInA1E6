@@ -58,6 +58,17 @@ echo '
                     <li class="nav-item">
                     <a href="../client/create.php" class="btn btn-outline-warning text-black mx-1">Create New Thread</a>
                     </li>
+                    ';
+               
+                    if( basename($_SERVER['PHP_SELF'], '.php') == 'index' || basename($_SERVER['PHP_SELF'], '.php') == 'searchIndex') {
+                        echo '<li class ="nav-item">
+                        <form method="GET" action="searchIndex.php">
+                            <input type="text" name = "search" class = "m-1" placeholder="Search"/>
+                            <button type="submit" class="btn btn-light m-1" name="submitSearch">Submit</button> 
+                        <form>
+                        </li>';
+                    } 
+                    echo '
                 </ul>
                 <div class="mt-2 text-end"> Welcome back ' . $userName . ' <img src ="'. $image . '" width =50 height =50 ></div>
 

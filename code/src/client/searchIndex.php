@@ -1,17 +1,22 @@
 <?php
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
+
+include "../database/config.php";
+$searchQuery='';
+$result='';
+
+
+if (isset($_GET['submitSearch'])){
+    if(isset($_GET['search'])){
+
+        $searchQuery = mysqli_real_escape_string($conn, $_GET['search']);
+        $sql = "SELECT * FROM threads WHERE title LIKE '%$searchQuery%'";
+        $result = $conn->query($sql);
+        echo '<h2>'. $sql .'</h2>';
+    }
+
 }
-    include "../client/header.php";
-    include "../database/config.php";
-    $sql = "SELECT * FROM threads";
-    $result = $conn->query($sql);
+include "../client/header.php";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
   <title>JEMS-EH</title>
   <meta charset="utf-8">
@@ -23,7 +28,6 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="./css/register.css" />
 
 </head>
-
 
 <body>
   <div class= "container sticky-top rounded-3">
@@ -53,11 +57,17 @@ if(!isset($_SESSION))
                     </tr>                       
         <?php
           }
-        }
-        ?>                
+          ?>               
       </tbody>
     </table>
     </div>
+    <?php
+     }
+        else{?>
+            <h2>There was no search results....</h2>
+            <?php
+            }
+        ?> 
   </div>
 </div>
 </body>
