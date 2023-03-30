@@ -39,9 +39,24 @@ echo '
                     </li>
                     <li class="nav-item">
                     <a href="#" class="btn btn-outline-warning text-black mx-1">New</a>
-                    </li>
+                    </li>';
+                    if( basename($_SERVER['PHP_SELF'], '.php') == 'adminIndex' || basename($_SERVER['PHP_SELF'], '.php') == 'adminSearchIndex') {
+                        echo '<li class ="nav-item">
+                        <form method="GET" action="searchIndex.php">
+                            <input type="text" name = "search" class = "m-1" placeholder="Search"/>
+                            <label for="filter">Search by:</label>
+                            <select name="filter" id="filter">
+                                <option value="title">Thread Title</option>
+                                <option value="userName">User</option>
+                                <option value="category">Category</option>
+                            </select>
+                            <button type="submit" class="btn btn-secondary m-1" name="submitSearch">Submit</button> 
+
+                        <form>
+                        </li>';
+                    } 
                
-                </ul>
+                echo '</ul>
                 <div class="mt-2 text-end"> Welcome back ' . $userName . '</div>
                 <div class = "text-end">
                     <button class="btn btn-outline-primary mx-1"> <a href="../client/logout.php"> LogOut </a> </button>
