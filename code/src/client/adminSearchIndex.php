@@ -1,20 +1,8 @@
 <?php
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-}
-    include "../client/adminHeader.php";
-    include "../database/config.php";
 
-    $sql = "SELECT * FROM threads";
-
-    $result = $conn->query($sql);
-    if(isset($_SESSION['loggedIn']) & $_SESSION['admin'] == 'true'){
+include "../database/config.php";
+include "../client/adminHeader.php";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
   <title>JEMS-EH</title>
   <meta charset="utf-8">
@@ -27,7 +15,6 @@ if(!isset($_SESSION))
 
 </head>
 
-
 <body>
   <div class= "container sticky-top rounded-3">
   <div class="container text-center">
@@ -38,25 +25,49 @@ if(!isset($_SESSION))
           <th>User</th>
           <th>Title</th>
           <th>Category</th>
+          <th>Family Friendly</th>
+          <th>Friends Only</th>
           <th>Status</th>
         </tr>
       </thead>
       <tbody> 
         <?php
+        if (isset($_GET['submitSearch'])){
+            if(isset($_GET['search'])){
+        
+                $searchQuery = mysqli_real_escape_string($conn, $_GET['search']);
+                $searchFilter = mysqli_real_escape_string($conn, $_GET['filter']);
+
+                if($searchFilter == "title"){
+                    $sql = "SELECT * FROM threads WHERE title LIKE '%$searchQuery%';";
+                }
+                else if($searchFilter == "category"){
+                    $sql = "SELECT * FROM threads WHERE category LIKE '%$searchQuery%';";
+                }else if($searchFilter == "userName"){
+                    $sql = "SELECT * FROM threads WHERE userName LIKE '%$searchQuery%';";
+                }
+
+                $result = $conn->query($sql);
+        
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
         ?>
                     <tr>
                     <td><?php echo $row['userName']; ?></td>
-                    <td><?php echo '<a href="adminThread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
-                    <td><?php echo $row['title']; ?></td>
+                    <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
-                    <td></a>&nbsp;<a class="btn btn-danger" href="adminDeleteThread.php?id=<?php echo $row['id']; ?>">Delete</a></td>     
+                    <td><?php echo $row['familyFriendly']; ?></td>
+                    <td><?php echo $row['friendsOnly']; ?> </td>
+                    <td></a>&nbsp;<a class="btn btn-danger" href="deleteThread.php?id=<?php echo $row['id']; ?>">Delete</a></td>     
                     </tr>                       
         <?php
-          }
+            }
+            }else{
+                echo '<h2>Sorry there was no results for ' . $searchQuery . '</h2>';
+            }
         }
-        ?>                
+    }
+          ?>               
       </tbody>
     </table>
     </div>
@@ -66,10 +77,6 @@ if(!isset($_SESSION))
 
 <?php
 include "../client/footer.php";
-      }
-      else{
-        header('../server/login.php');
-      }
 ?>
 
 

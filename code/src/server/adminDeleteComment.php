@@ -5,12 +5,14 @@ if(!isset($_SESSION))
 }
 include "../database/config.php";
 
-    if(isset($_GET['id']) & isset($_GET['threadID']) & isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == 'true'){
+    if(isset($_GET['id']) & isset($_GET['threadID']) & isset($_SESSION['loggedIn']) & $_SESSION['admin'] == 'true'){
         $userName = $_SESSION['userName'];
         $commentId = $_GET['id'];
         $threadID = $_GET['threadID'];
 
-        $sql = "UPDATE comments SET content ='This comment has been deleted' WHERE id=?;";
+        
+
+        $sql = "UPDATE comments SET content ='This post was deleted by an Admin' WHERE id=?;";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('i', $commentId);
         $stmt->execute();
@@ -19,6 +21,6 @@ include "../database/config.php";
           }
         else{
         
-            header('location: ../client/thread.php?ID=' . $threadID);
+            header('location: ../client/adminThread.php?ID=' . $threadID);
         }
 }

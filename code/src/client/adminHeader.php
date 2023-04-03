@@ -21,17 +21,14 @@ echo '
     <div class= "container sticky-top rounded-3">
     <div class="container-fluid sticky-top bg-white rounded-3">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <a href="../client/index.php" class="navbar-brand mb-3 mb-md-0 me-md-auto text-dark">
+            <a href="../client/adminIndex.php" class="navbar-brand mb-3 mb-md-0 me-md-auto text-dark">
                 <span class="fs-4 p-1 rounded-2 bg-warning me-1">JEMS-EH</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <div>
-                    <button class="btn btn-outline-primary mx-1"> <a href="profile.php"> View  </a> </button>
-                </div>
-
+            
                     
                 <ul class="navbar-nav nav-pills me-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
@@ -42,7 +39,7 @@ echo '
                     </li>';
                     if( basename($_SERVER['PHP_SELF'], '.php') == 'adminIndex' || basename($_SERVER['PHP_SELF'], '.php') == 'adminSearchIndex') {
                         echo '<li class ="nav-item">
-                        <form method="GET" action="searchIndex.php">
+                        <form method="GET" action="adminSearchIndex.php">
                             <input type="text" name = "search" class = "m-1" placeholder="Search"/>
                             <label for="filter">Search by:</label>
                             <select name="filter" id="filter">
