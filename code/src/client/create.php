@@ -63,9 +63,9 @@
                 
                 <br>
                 <br>
-                <div class="input-group btn btn-primary">
-  	              <button type="submit" class="btn" name="submit">Submit</button>
-  	            </div>          
+                <!-- <div class="input-group btn btn-primary"> -->
+  	              <button type="submit input-group btn btn-primary" class="btn" name="submit">Submit</button>
+  	            <!-- </div>           -->
         </div>
         </div>
     </form>
