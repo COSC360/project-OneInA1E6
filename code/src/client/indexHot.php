@@ -5,7 +5,7 @@ if(!isset($_SESSION))
 }
     include "../client/header.php";
     include "../database/config.php";
-    $sql = "SELECT * FROM threads WHERE friendsOnly = 'no'";
+    $sql = "SELECT threads.id as id, threads.userName as userName, threads.title as title, threads.category as category, threads.familyFriendly as familyFriendly, threads.description, COUNT(likes.threadID) as Likes  FROM threads INNER JOIN likes WHERE threads.id = likes.threadID and friendsOnly = 'no' GROUP BY id ORDER BY Likes;";
     $result = $conn->query($sql);
 
     
@@ -37,7 +37,7 @@ if(!isset($_SESSION))
           <th>Title</th>
           <th>Category</th>
           <th>Family Friendly</th>
-          <th>Friends Only</th>
+          <th>Likes</th>
         </tr>
       </thead>
       <tbody> 
@@ -55,7 +55,7 @@ if(!isset($_SESSION))
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>
-                    <td><?php echo $row['friendsOnly']; ?> </td>
+                    <td><?php echo $row['Likes']; ?></td>
                     </tr>                       
         <?php
           }

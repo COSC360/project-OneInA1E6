@@ -30,13 +30,7 @@ echo '
             <div class="collapse navbar-collapse" id="navbarScroll">
             
                     
-                <ul class="navbar-nav nav-pills me-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li class="nav-item">
-                    <a href="#" class="btn btn-outline-warning text-black mx-1">Hot</a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="#" class="btn btn-outline-warning text-black mx-1">New</a>
-                    </li>';
+                <ul class="navbar-nav nav-pills me-auto my-2 my-lg-0 navbar-nav-scroll">';
                     if( basename($_SERVER['PHP_SELF'], '.php') == 'adminIndex' || basename($_SERVER['PHP_SELF'], '.php') == 'adminSearchIndex') {
                         echo '<li class ="nav-item">
                         <form method="GET" action="adminSearchIndex.php">

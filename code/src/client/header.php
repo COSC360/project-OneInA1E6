@@ -47,7 +47,7 @@ echo '
                     
                 <ul class="navbar-nav nav-pills me-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">Hot</a>
+                    <a href="../client/indexHot.php" class="btn btn-outline-warning text-black mx-1">Hot</a>
                     </li>
                     <li class="nav-item">
                     <a href="../client/liked.php" class="btn btn-outline-warning text-black mx-1">Liked</a>
@@ -113,7 +113,7 @@ else {
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav nav-pills mx-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                    <a href="#" class="nav-link active bg-warning text-black">Hot</a>
+                    <a href="../client/indexHot.php" class="nav-link active bg-warning text-black">Hot</a>
                     </li>
                     <li class="nav-item">
                     <a href="#" class="nav-link text-black">New</a>
