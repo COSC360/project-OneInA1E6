@@ -8,10 +8,10 @@ if(!isset($_SESSION))
     
     $loggedin=true;
     $userID = $_SESSION['userID'];
-    $friends = "SELECT * from users 
-      INNER JOIN friends ON users.id=friends.friendID";
-    $followingList = $conn->query($sql);
-    print_r($followingList);
+    $friends = "SELECT * from friends 
+      INNER JOIN users ON friends.friendID=users.id
+      WHERE userID='$userID'";
+    $followingList = $conn->query($friends);
     
     
 
@@ -49,20 +49,28 @@ if(!isset($_SESSION))
       </thead>
       <tbody> 
         <?php
+        if ($followingList->num_rows > 0) {
+          while ($indiv = $followingList->fetch_assoc()) {
+            $indivName = $indiv['userName'];
+            $posts = "SELECT * from threads WHERE userName='$indivName'";
+            $result = $conn->query($posts);
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
         ?>
-                    <tr>  
-                    <td><?php echo '<a href="userPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
-                    <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
-                    <td><?php echo $row['category']; ?></td>
-                    <td><?php echo $row['familyFriendly']; ?></td>
-                    <td><?php echo $row['friendsOnly']; ?> </td>
-                    </tr>                       
+              <tr>  
+              <td><?php echo '<a href="userPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
+              <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
+              <td><?php echo $row['category']; ?></td>
+              <td><?php echo $row['familyFriendly']; ?></td>
+              <td><?php echo $row['friendsOnly']; ?> </td>
+              </tr>                       
         <?php
+              }
+            }
           }
-        }
-        ?>                
+        } else { ?>
+          <span> You're not following anyone yet! </span> 
+        <?php } ?>                
       </tbody>
     </table>
     </div>
