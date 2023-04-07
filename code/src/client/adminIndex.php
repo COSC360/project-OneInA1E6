@@ -151,17 +151,6 @@ var myChart = new Chart(
 
 </script>
  
-
-
-
-
-
-
-
-
-
-
-
 <div class= "container sticky-top rounded-3">
   <div class="container text-center">
     <div class="row p-1 mb-2 bg-white rounded border">
@@ -180,7 +169,7 @@ var myChart = new Chart(
               while ($row = $result->fetch_assoc()) {
         ?>
                     <tr>
-                    <td><?php echo $row['userName']; ?></td>
+                    <td><?php echo '<a href="adminIndivPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
                     <td><?php echo '<a href="adminThread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['category']; ?></td>
