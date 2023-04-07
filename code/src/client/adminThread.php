@@ -26,8 +26,6 @@
   <link rel="stylesheet" href="./css/register.css" />
 
 </head>
-
-
 <body>
   <div class= "container sticky-top rounded-3">
   <div class="container">

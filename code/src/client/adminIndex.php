@@ -10,6 +10,16 @@ if(!isset($_SESSION))
 
     $result = $conn->query($sql);
     if(isset($_SESSION['loggedIn']) & $_SESSION['admin'] == 'true'){
+
+      $query = $conn->query("SELECT COUNT(content) as numComments, username as names FROM comments GROUP BY names ORDER BY numComments ASC LIMIT 5");
+      
+      foreach($query as $data){
+        $numComments[] = $data['numComments'];
+        $usernames[] = $data['names'];
+      }
+      
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +39,83 @@ if(!isset($_SESSION))
 
 
 <body>
-  <div class= "container sticky-top rounded-3">
+
+<div class= "container rounded-3 mt-2">
+  <div class="container text-center">
+    <div class="row p-1 mb-2 bg-white rounded border" style = "width:500px;">
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = <?php echo json_encode($usernames)?>;
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Top 5 commenting Users',
+    data: <?php echo json_encode($numComments)?>,
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+};
+
+var myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
+
+
+
+
+
+</script>
+ 
+
+
+
+
+
+
+
+
+
+
+
+<div class= "container sticky-top rounded-3">
   <div class="container text-center">
     <div class="row p-1 mb-2 bg-white rounded border">
     <table class="table">
