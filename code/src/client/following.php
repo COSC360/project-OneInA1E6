@@ -6,10 +6,10 @@ if(!isset($_SESSION))
     include "../client/header.php";
     include "../database/config.php";
     $userID = $_SESSION['userID'];
-    $sql = "SELECT * from threads 
-        INNER JOIN likes ON threads.id=likes.threadID
-        WHERE userID='$userID'";
-    $result = $conn->query($sql);
+    $friends = "SELECT * from users 
+        INNER JOIN friends ON users.id=friends.friendID";
+    $followingList = $conn->query($sql);
+    print_r($followingList);
 
 ?>
 
@@ -31,7 +31,7 @@ if(!isset($_SESSION))
 <body>
   <div class= "container sticky-top rounded-3">
   <div class="container text-center">
-    <h1>Your liked posts</h1>
+    <h1>Posts from users you follow</h1>
     <div class="row p-1 mb-2 bg-white rounded border">
     <table class="table">
       <thead>
@@ -49,7 +49,7 @@ if(!isset($_SESSION))
               while ($row = $result->fetch_assoc()) {
         ?>
                     <tr>  
-                    <td><?php echo $row['userName']; ?></td>
+                    <td><?php echo '<a href="userPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>

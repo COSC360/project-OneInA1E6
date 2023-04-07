@@ -53,6 +53,9 @@ echo '
                     <a href="../client/liked.php" class="btn btn-outline-warning text-black mx-1">Liked</a>
                     </li>
                     <li class="nav-item">
+                    <a href="../client/following.php" class="btn btn-outline-warning text-black mx-1">Following</a>
+                    </li>
+                    <li class="nav-item">
                     <a href="../client/create.php" class="btn btn-outline-warning text-black mx-1">Create New Thread</a>
                     </li>
                     ';

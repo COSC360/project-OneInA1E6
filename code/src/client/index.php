@@ -46,7 +46,12 @@ if(!isset($_SESSION))
               while ($row = $result->fetch_assoc()) {
         ?>
                     <tr>  
-                    <td><?php echo $row['userName']; ?></td>
+                    <?php 
+                    if (isset($_SESSION['userName']) && $row['userName'] == $_SESSION['userName']) { ?>
+                      <td><?php echo '<a href="profile.php">', $row['userName'],' (you)</a>'; ?></td>
+                    <?php } else { ?>
+                      <td><?php echo '<a href="indivPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
+                    <?php } ?> 
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>
@@ -71,9 +76,4 @@ include "../client/footer.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
   integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="./script/index.js"></script>
-<script> 
-function likeThread(x) {
-    x.classList.toggle("bi-heart-fill");
-}
-</script>
 </html>
