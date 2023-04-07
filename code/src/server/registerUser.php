@@ -135,6 +135,9 @@ if (isset($_POST['login_user'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['userName'] = $username;
   	  $_SESSION['loggedIn'] = "true";
+      $user = "SELECT id FROM users WHERE userName='$username'";
+      $userID = $conn->query($user)->fetch_assoc();
+      $_SESSION['userID'] = $userID['id'];
   	  header('location: ../client/index.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");

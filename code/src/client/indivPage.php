@@ -9,22 +9,27 @@ if(!isset($_SESSION))
     $sql = "SELECT * from threads WHERE userName='$indivName'";
     $result = $conn->query($sql);
 
+    //get the individual who's page this is' ID
     $users = "SELECT id FROM users WHERE userName='$indivName'";
     $usersResults = $conn->query($users);
     if ($usersResults->num_rows>0) {
         $indiv = $usersResults->fetch_assoc();
         $indivID = $indiv['id'];
     }
-    $alreadyFollowing = false;
-    $userID = $_SESSION['userID'];
-    $toCheck = "SELECT * FROM friends WHERE userID='$userID';";
-    $followList = $conn->query($toCheck);
-    if ($followList->num_rows > 0) {
-        while($following = $followList->fetch_assoc()) {
-            if ($following['friendID'] == $indivID) {
-                $alreadyFollowing = true;
-            }
-        }
+    $loggedin = false;
+    if (isset($_SESSION['loggedIn']) & $_SESSION['loggedIn']=='true'){
+      $loggedin = true;
+      $alreadyFollowing = false;
+      $userID = $_SESSION['userID'];
+      $toCheck = "SELECT * FROM friends WHERE userID='$userID';";
+      $followList = $conn->query($toCheck);
+      if ($followList->num_rows > 0) {
+          while($following = $followList->fetch_assoc()) {
+              if ($following['friendID'] == $indivID) {
+                  $alreadyFollowing = true;
+              }
+          }
+      }
     }
 
 ?>
@@ -49,7 +54,9 @@ if(!isset($_SESSION))
   <div class="container text-center">
     <h1><?php echo $indivName?>'s posts</h1>
     <form onsubmit="follow('<?php echo $indivName?>')" action="#">
-    <?php if ($alreadyFollowing) { ?>
+    <?php if (!$loggedin) { ?>
+      <button type="submit" id="followButton" class="btn btn-danger m-2 disabled" name="name" value="<?php echo $indivName?>">Follow</button>
+    <?php } else if ($alreadyFollowing) { ?>
       <button type="submit" id="followButton" class="btn btn-danger m-2" name="name" value="<?php echo $indivName?>">Unfollow</button>
     <?php } else { ?>
       <button type="submit" id="followButton" class="btn btn-primary m-2" name="name" value="<?php echo $indivName?>">Follow</button>

@@ -5,11 +5,15 @@ if(!isset($_SESSION))
 }
     include "../client/header.php";
     include "../database/config.php";
+    
+    $loggedin=true;
     $userID = $_SESSION['userID'];
     $friends = "SELECT * from users 
-        INNER JOIN friends ON users.id=friends.friendID";
+      INNER JOIN friends ON users.id=friends.friendID";
     $followingList = $conn->query($sql);
     print_r($followingList);
+    
+    
 
 ?>
 
