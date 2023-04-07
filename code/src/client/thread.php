@@ -9,7 +9,10 @@
 
     $commentsAll = "SELECT * FROM comments WHERE threadId = '$threadID';";
     $commentResults = $conn->query($commentsAll);
-
+    $loggedin = false;
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']=='true'){
+      $loggedin = true;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +57,9 @@
                             $getLikes = "SELECT * FROM likes WHERE threadID='$rowID';";
                             $likeList = $conn->query($getLikes);
                             $toDisplayImage = 'bi bi-heart';
-                            if ($likeList->num_rows > 0) {
+                            if (!$loggedin) {
+                                $toDisplayImage = 'bi bi-heart disabled';
+                            } else if ($likeList->num_rows > 0) {
                                 while($liked = $likeList->fetch_assoc()) {
                                     if ($liked['userID'] == $_SESSION['userID']) {
                                         $toDisplayImage='bi bi-heart-fill';
@@ -62,7 +67,6 @@
                                 }
                             }
                         ?><td>
-                            <!-- action="../server/likePost.php"  method="POST"-->
                             <form onsubmit="like(<?php echo $thread['id']?>)" action="#">
                                 <button type="submit" id="heart" class="<?php echo $toDisplayImage?>" name="ID" value="<?php echo $thread['id']?>"></button>
                             </form>

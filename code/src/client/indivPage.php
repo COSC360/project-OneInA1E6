@@ -17,7 +17,7 @@ if(!isset($_SESSION))
         $indivID = $indiv['id'];
     }
     $loggedin = false;
-    if (isset($_SESSION['loggedIn']) & $_SESSION['loggedIn']=='true'){
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']=='true'){
       $loggedin = true;
       $alreadyFollowing = false;
       $userID = $_SESSION['userID'];
@@ -55,7 +55,7 @@ if(!isset($_SESSION))
     <h1><?php echo $indivName?>'s posts</h1>
     <form onsubmit="follow('<?php echo $indivName?>')" action="#">
     <?php if (!$loggedin) { ?>
-      <button type="submit" id="followButton" class="btn btn-danger m-2 disabled" name="name" value="<?php echo $indivName?>">Follow</button>
+      <button type="submit" id="followButton" class="btn btn-primary m-2 disabled" name="name" value="<?php echo $indivName?>">Follow</button>
     <?php } else if ($alreadyFollowing) { ?>
       <button type="submit" id="followButton" class="btn btn-danger m-2" name="name" value="<?php echo $indivName?>">Unfollow</button>
     <?php } else { ?>
