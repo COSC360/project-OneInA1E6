@@ -7,6 +7,8 @@ if(!isset($_SESSION))
     include "../database/config.php";
     $sql = "SELECT * FROM threads";
     $result = $conn->query($sql);
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,6 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="./css/register.css" />
-
 </head>
 
 
@@ -32,6 +33,7 @@ if(!isset($_SESSION))
     <table class="table">
       <thead>
         <tr>
+          <th>Like</th>
           <th>User</th>
           <th>Title</th>
           <th>Category</th>
@@ -44,7 +46,7 @@ if(!isset($_SESSION))
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
         ?>
-                    <tr>
+                    <tr>  
                     <td><?php echo $row['userName']; ?></td>
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
@@ -70,4 +72,9 @@ include "../client/footer.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
   integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="./script/index.js"></script>
+<script> 
+function likeThread(x) {
+    x.classList.toggle("bi-heart-fill");
+}
+</script>
 </html>

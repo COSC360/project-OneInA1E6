@@ -82,6 +82,9 @@ if (isset($_POST['submit'])) {
 
   	$_SESSION['userName'] = $username;
   	$_SESSION['loggedIn'] = "true";
+    $user = "SELECT id FROM users WHERE userName='$username'";
+    $userID = $conn->query($user)->fetch_assoc();
+    $_SESSION['userID'] = $userID['id'];
     
     $mail = new PHPMailer(true);
 

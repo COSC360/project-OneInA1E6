@@ -69,7 +69,7 @@ echo '
                             </select>
                             <button type="submit" class="btn btn-secondary m-1" name="submitSearch">Submit</button> 
 
-                        <form>
+                        </form>
                         </li>';
                     } 
                     echo '

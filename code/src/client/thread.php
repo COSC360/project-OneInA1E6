@@ -35,6 +35,7 @@
         <table class="table">
         <thead>
             <tr>
+            <th>Like</th>
             <th>User</th>
             <th>Title</th>
             <th>Category</th>
@@ -48,6 +49,25 @@
                     $thread = $result->fetch_assoc();
             ?>
                         <tr>
+                        <?php
+                            $rowID = $thread['id'];
+                            $getLikes = "SELECT * FROM likes WHERE threadID='$rowID';";
+                            $likeList = $conn->query($getLikes);
+                            $toDisplayImage = 'bi bi-heart';
+                            if ($likeList->num_rows > 0) {
+                                while($liked = $likeList->fetch_assoc()) {
+                                    if ($liked['userID'] == $_SESSION['userID']) {
+                                        $toDisplayImage='bi bi-heart-fill';
+                                    }
+                                }
+                            }
+                        ?><td>
+                            <!-- action="../server/likePost.php"  method="POST"-->
+                            <form onsubmit="like(<?php echo $thread['id']?>)" action="#">
+                                <button type="submit" id="heart" class="<?php echo $toDisplayImage?>" name="ID" value="<?php echo $thread['id']?>"></button>
+                            </form>
+                            <span id="numLikes" class="ms-3"><?php echo $likeList->num_rows ?></span>
+                        </td>
                         <td><?php echo $thread['userName']; ?></td>
                         <td><?php echo $thread['title']; ?></td>
                         <td><?php echo $thread['category']; ?></td>
@@ -125,4 +145,19 @@ include "../client/footer.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
   integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="./script/index.js"></script>
+<script>
+function like(id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        const response = JSON.parse(this.responseText);
+        document.getElementById("heart").className=response.class;
+        document.getElementById("numLikes").innerHTML=response.likes;
+      }
+    };
+    xmlhttp.open("GET", "../server/likePost.php?liked="+id, true);
+    //xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+}
+</script>
 </html>
