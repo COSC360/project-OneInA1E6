@@ -37,7 +37,6 @@ if(!isset($_SESSION))
           <th>Title</th>
           <th>Category</th>
           <th>Family Friendly</th>
-          <th>Friends Only</th>
         </tr>
       </thead>
       <tbody> 
@@ -55,7 +54,6 @@ if(!isset($_SESSION))
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>
-                    <td><?php echo $row['friendsOnly']; ?> </td>
                     </tr>                       
         <?php
           }
