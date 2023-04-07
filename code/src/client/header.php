@@ -50,7 +50,7 @@ echo '
                     <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">Hot</a>
                     </li>
                     <li class="nav-item">
-                    <a href="../client/index.php" class="btn btn-outline-warning text-black mx-1">liked</a>
+                    <a href="../client/liked.php" class="btn btn-outline-warning text-black mx-1">Liked</a>
                     </li>
                     <li class="nav-item">
                     <a href="../client/create.php" class="btn btn-outline-warning text-black mx-1">Create New Thread</a>

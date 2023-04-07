@@ -5,10 +5,12 @@ if(!isset($_SESSION))
 }
     include "../client/header.php";
     include "../database/config.php";
-    $sql = "SELECT * FROM threads";
+    $userID = $_SESSION['userID'];
+    $sql = "SELECT * from threads 
+        INNER JOIN likes ON threads.id=likes.threadID
+        WHERE userID='$userID'";
     $result = $conn->query($sql);
 
-    
 ?>
 
 <!DOCTYPE html>
