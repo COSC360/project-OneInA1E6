@@ -11,11 +11,19 @@ if(!isset($_SESSION))
     $result = $conn->query($sql);
     if(isset($_SESSION['loggedIn']) & $_SESSION['admin'] == 'true'){
 
-      $query = $conn->query("SELECT COUNT(content) as numComments, username as names FROM comments GROUP BY names ORDER BY numComments ASC LIMIT 5");
+      $query = $conn->query("SELECT COUNT(content) as numComments, username as usernames FROM comments GROUP BY usernames ORDER BY numComments ASC LIMIT 5");
       
       foreach($query as $data){
         $numComments[] = $data['numComments'];
-        $usernames[] = $data['names'];
+        $usernames[] = $data['usernames'];
+      }
+
+      
+      $query = $conn->query("SELECT users.username as usernames, COUNT(friends.friendID) as followings from friends INNER JOIN users ON friends.friendID=users.id GROUP BY usernames ORDER BY followings");
+      
+      foreach($query as $data){
+        $followings[] = $data['followings'];
+        $usernames2[] = $data['usernames'];
       }
       
   
@@ -42,15 +50,58 @@ if(!isset($_SESSION))
 
 <div class= "container rounded-3 mt-2">
   <div class="container text-center">
-    <div class="row p-1 mb-2 bg-white rounded border" style = "width:500px;">
-  <canvas id="myChart"></canvas>
-</div>
-</div>
-
+    <div style = "width:500px; display:inline-block;">
+      <div class=" p-1 mb-2 bg-white rounded border"><canvas id="myChart"></canvas></div>
+      <div class=" p-1 mb-2 bg-white rounded border" ><canvas id="myChart2"></canvas></div>
+    </div>
+  </div>
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels2 = <?php echo json_encode($usernames2)?>;
+const data2 = {
+  labels: labels2,
+  datasets: [{
+    label: 'Top 5 Followed users',
+    data: <?php echo json_encode($followings)?>,
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+const config2 = {
+  type: 'polarArea',
+  data: data2,
+  options: {}
+};
+
+var myChart2 = new Chart(
+  document.getElementById('myChart2'),
+  config2
+);
+
+</script>
+
 
 <script>
 const labels = <?php echo json_encode($usernames)?>;
@@ -97,10 +148,6 @@ var myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
-
-
-
-
 
 </script>
  
