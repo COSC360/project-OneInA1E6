@@ -49,10 +49,10 @@ if(!isset($_SESSION))
 <body>
 
 <div class= "container rounded-3 mt-2">
-  <div class="container text-center">
-    <div style = "width:500px; display:inline-block;">
-      <div class=" p-1 mb-2 bg-white rounded border"><canvas id="myChart"></canvas></div>
-      <div class=" p-1 mb-2 bg-white rounded border" ><canvas id="myChart2"></canvas></div>
+  <div class="container">
+    <div class = "row justify-content-md-center">
+      <div class="col-4 p-1 mb-2 mx-3 bg-white rounded border"><canvas id="myChart"></canvas></div>
+      <div class="col-4 p-1 mb-2 mx-3 bg-white rounded border" ><canvas id="myChart2"></canvas></div>
     </div>
   </div>
 </div>
