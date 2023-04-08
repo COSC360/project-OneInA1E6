@@ -75,9 +75,10 @@ if (isset($_POST['submit'])) {
     }
     
   if (count($errors) == 0) {
+    $passwordHash = md5($password_1);
     $sql = "INSERT INTO users (userName, email, password, firstName, lastName, image) VALUES(?, ?, ?, ?, ?, ?);";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssss', $username, $email, $firstname, $lastname, $password_1, $target_file);
+    $stmt->bind_param('ssssss', $username, $email, $passwordHash, $firstname, $lastname, $target_file);
     $stmt->execute();
 
   	$_SESSION['userName'] = $username;
@@ -121,7 +122,6 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($conn, $_POST['userName']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
-
   if (empty($username)) {
   	array_push($errors, "Username is required");
   }
@@ -130,7 +130,8 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$query = "SELECT * FROM users WHERE userName='$username' AND password='$password';";
+    $passwordHash = md5($password);
+  	$query = "SELECT * FROM users WHERE userName='$username' AND password='$passwordHash';";
   	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['userName'] = $username;

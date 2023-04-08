@@ -27,14 +27,14 @@
 
 </head>
 <body>
-  <div class= "container sticky-top rounded-3">
+  <div class= "container sticky-top rounded-3 mt-2">
   <div class="container">
     <div class="row p-1 mb-2 bg-white rounded border">
         <table class="table">
         <thead>
             <tr>
-            <th>User</th>
-            <th>Title</th>
+            <th>Thread Title</th>
+            <th>Author</th>
             <th>Category</th>
             <th>Family Friendly</th>
             <th>Friends Only</th>
@@ -46,8 +46,8 @@
                     $thread = $result->fetch_assoc();
             ?>
                         <tr>
+                        <td><h2><?php echo $thread['title']; ?></h2></td>
                         <td><?php echo $thread['userName']; ?></td>
-                        <td><?php echo $thread['title']; ?></td>
                         <td><?php echo $thread['category']; ?></td>
                         <td><?php echo $thread['familyFriendly']; ?></td>
                         <td><?php echo $thread['friendsOnly']; ?> </td>
@@ -59,7 +59,7 @@
         </tbody>
         </table>
         <div> 
-            <span>Description: </span>
+            <span><h6>Description: </h6></span>
             <?php echo $thread['description']; ?>
         </div>
     </div>

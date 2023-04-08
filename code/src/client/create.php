@@ -9,7 +9,7 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./css/index.css" />
-  
+  <link rel="stylesheet" href="./css/register.css" />
 </head>
 
 <body>
@@ -22,7 +22,7 @@
   ?>
   
         <div class="container text-right">
-            <div class="row p-1 mb-5 bg-white rounded border">
+            <div class="row p-1 mb-2 mt-2 bg-white rounded border">
                 <h1>Create New Thread</h1>
             </div>
         </div>
@@ -71,6 +71,15 @@
     </form>
   </div>
 </body>
+<?php
+  
+  include "../client/footer.php";
+ ?>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+  integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="./script/index.js"></script>
 </html>
 
 

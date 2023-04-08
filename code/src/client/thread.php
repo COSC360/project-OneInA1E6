@@ -32,20 +32,10 @@
 
 
 <body>
-  <div class= "container sticky-top rounded-3">
+  <div class= "container sticky-top rounded-3 mt-2">
   <div class="container">
     <div class="row p-1 mb-2 bg-white rounded border">
         <table class="table">
-        <thead>
-            <tr>
-            <th>Like</th>
-            <th>User</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Family Friendly</th>
-            <th>Friends Only</th>
-            </tr>
-        </thead>
         <tbody> 
             <?php
                 if ($result->num_rows > 0) {
@@ -66,17 +56,15 @@
                                     }
                                 }
                             }
-                        ?><td>
+                        ?>
+                        <td><h2><?php echo $thread['title']; ?></h2></td>
+                        <td>Author: <?php echo $thread['userName']; ?></td>
+                        <td>
                             <form onsubmit="like(<?php echo $thread['id']?>)" action="#">
                                 <button type="submit" id="heart" class="<?php echo $toDisplayImage?>" name="ID" value="<?php echo $thread['id']?>"></button>
                             </form>
                             <span id="numLikes" class="ms-3"><?php echo $likeList->num_rows ?></span>
                         </td>
-                        <td><?php echo $thread['userName']; ?></td>
-                        <td><?php echo $thread['title']; ?></td>
-                        <td><?php echo $thread['category']; ?></td>
-                        <td><?php echo $thread['familyFriendly']; ?></td>
-                        <td><?php echo $thread['friendsOnly']; ?> </td>
                         </tr>
             <?php
             
@@ -85,7 +73,7 @@
         </tbody>
         </table>
         <div> 
-            <span>Description: </span>
+            <span><h6>Description:</h6></span>
             <?php echo $thread['description']; ?>
         </div>
     </div>

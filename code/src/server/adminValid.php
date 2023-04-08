@@ -13,6 +13,7 @@ if (isset($_POST['adminLog'])) {
     }
   
     if (count($errors) == 0) {
+
         $query = "SELECT * FROM admins WHERE adminKey='$adminKey' AND password='$password'";
         $results = mysqli_query($conn, $query);
         if (mysqli_num_rows($results) == 1) {

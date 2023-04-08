@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
             array_push($errors, "The two passwords do not match");
         }
         //email validation
-        $sqlemail = "SELECT * FROM users WHERE email='$email'";
+        $sqlemail = "SELECT * FROM users WHERE email='$email' and username!='$username'";
         $query = mysqli_query($conn, $sqlemail);
         
         if (mysqli_num_rows($query) > 0) {
@@ -62,10 +62,10 @@ if (isset($_POST['submit'])) {
         if (count($errors) == 0) {
 
             move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-
-            $sql = "UPDATE users SET email=?, firstName = ?, lastName=?, password= ?, image =? WHERE userName=?;";
+            $passwordHash = md5($password_1);
+            $sql = "UPDATE users SET email=?, password= ?, firstName = ?, lastName=?, image =? WHERE userName=?;";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ssssss', $email, $firstname, $lastname, $password_1, $target_file, $username);
+            $stmt->bind_param('ssssss', $email, $passwordHash, $firstname, $lastname, $target_file, $username);
             $stmt->execute();
             if ($stmt->error) {
                 echo "please try again " . $stmt->error;

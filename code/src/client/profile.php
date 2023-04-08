@@ -38,7 +38,6 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                 <th>Email</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Password</th>
                 <th>Profile Picture</th>
                 </tr>
             </thead>
@@ -52,7 +51,6 @@ if(isset($_SESSION['loggedIn']) & $_SESSION['loggedIn'] == true){
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['firstName']; ?></td>
                             <td><?php echo $row['lastName']; ?></td>
-                            <td><?php echo $row['password']; ?></td>
                             <td><img src= '<?php echo $row['image']; ?>' width="100" height="100"></td>
                             </tr>                       
                 <?php
