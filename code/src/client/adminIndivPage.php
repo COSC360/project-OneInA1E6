@@ -67,7 +67,7 @@ if(!isset($_SESSION))
         ?>
                     <tr>  
                     <td><?php echo $row['userName']; ?></td>
-                    <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
+                    <td><?php echo '<a href="adminThread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>
                     <td><?php echo $row['friendsOnly']; ?> </td>
