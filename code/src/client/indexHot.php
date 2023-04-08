@@ -29,7 +29,7 @@ if(!isset($_SESSION))
 <body>
   <div class= "container sticky-top rounded-3">
   <div class="container text-center">
-    <div class="row p-1 mb-2 bg-white rounded border">
+    <div class="row p-1 mt-2 mb-2 bg-white rounded border">
     <table class="table">
       <thead>
         <tr>

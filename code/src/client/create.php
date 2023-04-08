@@ -64,7 +64,7 @@
                 <br>
                 <br>
                 <!-- <div class="input-group btn btn-primary"> -->
-  	              <button type="submit input-group btn btn-primary" class="btn" name="submit">Submit</button>
+  	              <button type="submit input-group" class="btn btn-primary" name="submit">Submit</button>
   	            <!-- </div>           -->
         </div>
         </div>
