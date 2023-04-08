@@ -5,7 +5,7 @@ if(!isset($_SESSION))
 }
     include "../client/header.php";
     include "../database/config.php";
-    $sql = "SELECT threads.id as id, threads.userName as userName, threads.title as title, threads.category as category, threads.familyFriendly as familyFriendly, threads.description, COUNT(likes.threadID) as Likes  FROM threads INNER JOIN likes WHERE threads.id = likes.threadID and friendsOnly = 'no' GROUP BY id ORDER BY Likes;";
+    $sql = "SELECT threads.id as id, threads.userName as userName, threads.title as title, threads.category as category, threads.familyFriendly as familyFriendly, threads.description, COUNT(likes.threadID) as Likes  FROM threads INNER JOIN likes WHERE threads.id = likes.threadID and friendsOnly = 'no' GROUP BY id ORDER BY Likes DESC;";
     $result = $conn->query($sql);
 
     

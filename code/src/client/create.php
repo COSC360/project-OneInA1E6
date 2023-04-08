@@ -72,8 +72,7 @@
   </div>
 </body>
 <?php
-  
-  include "../client/footer.php";
+
  ?>
 </html>
 
