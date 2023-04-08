@@ -61,9 +61,13 @@
                         <td><h2><?php echo $thread['title']; ?></h2></td>
                         <td>Author: <?php echo $thread['userName']; ?></td>
                         <td>
+                            <?php if ($thread['userName']==$_SESSION['userName']) { ?>
+                                <span>Likes:</span>
+                            <?php } else { ?>
                             <form onsubmit="like(<?php echo $thread['id']?>)" action="#">
                                 <button type="submit" id="heart" class="<?php echo $toDisplayImage?>" name="ID" value="<?php echo $thread['id']?>"></button>
                             </form>
+                            <?php } ?>
                             <span id="numLikes" class="ms-3"><?php echo $likeList->num_rows ?></span>
                         </td>
                         </tr>

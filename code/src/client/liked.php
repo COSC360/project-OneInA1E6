@@ -49,7 +49,7 @@ if(!isset($_SESSION))
               while ($row = $result->fetch_assoc()) {
         ?>
                     <tr>  
-                    <td><?php echo $row['userName']; ?></td>
+                    <td><?php echo '<a href="indivPage.php?name=',$row['userName'],'">', $row['userName'],'</a>'; ?></td>
                     <td><?php echo '<a href="thread.php?ID=' , $row['id'] , '">' , $row['title'] , '</a>'; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['familyFriendly']; ?></td>
