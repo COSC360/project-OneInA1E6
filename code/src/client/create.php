@@ -11,15 +11,14 @@
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="./css/register.css" />
 </head>
+<?php
+  
+  include "../client/header.php";
+ include ("../server/createThread.php");
+ ?>
 
 <body>
   <div class= "container sticky-top rounded-3">
-
-  <?php
-  
-   include "../client/header.php";
-  include ("../server/createThread.php");
-  ?>
   
         <div class="container text-right">
             <div class="row p-1 mb-2 mt-2 bg-white rounded border">
