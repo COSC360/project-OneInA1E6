@@ -4,7 +4,7 @@
     },
     "autoload": {
         "psr-4": {
-            "code\\src\\": "src"
+            "code\\src\\client": "code\\src\\client"
         }
     }
 }
