@@ -2,7 +2,7 @@
 
 require '../database/config.php';
 
-namespace src;
+namespace code;
 
 class testing {
 
