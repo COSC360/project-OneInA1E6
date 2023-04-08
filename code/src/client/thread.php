@@ -34,6 +34,7 @@
 <body>
   <div class= "container sticky-top rounded-3 mt-2">
   <div class="container">
+    <h1></h1>
     <div class="row p-1 mb-2 bg-white rounded border">
         <table class="table">
         <tbody> 
@@ -103,6 +104,7 @@
                             </div>
                         </button>
                         <?php
+                            if (isset($_SESSION['userName'])) {
                                     if($row['username'] == $_SESSION['userName']){?>
                                         <a class="btn btn-danger" href="../server/deleteComment.php?id=<?php echo $row['id']; ?>&threadID=<?php echo $row['threadID']; ?>">Delete</a>          
                                     <?php } ?>
@@ -119,6 +121,7 @@
                         <?php } ?>
                     </tr>                       
                  <?php
+                            }
                         }
                     }
                 ?> 
