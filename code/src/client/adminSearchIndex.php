@@ -16,7 +16,7 @@ include "../client/adminHeader.php";
 </head>
 
 <body>
-  <div class= "container sticky-top rounded-3">
+  <div class= "container mt-2 sticky-top rounded-3">
   <div class="container text-center">
     <div class="row p-1 mb-2 bg-white rounded border">
     <table class="table">
@@ -45,6 +45,8 @@ include "../client/adminHeader.php";
                     $sql = "SELECT * FROM threads WHERE category LIKE '%$searchQuery%';";
                 }else if($searchFilter == "userName"){
                     $sql = "SELECT * FROM threads WHERE userName LIKE '%$searchQuery%';";
+                }else if($searchFilter == "email"){
+                  $sql = "SELECT * FROM threads INNER JOIN users WHERE threads.userName = users.userName and email = '$searchQuery';";
                 }
 
                 $result = $conn->query($sql);

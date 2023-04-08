@@ -39,6 +39,7 @@ echo '
                             <select name="filter" id="filter">
                                 <option value="title">Thread Title</option>
                                 <option value="userName">User</option>
+                                <option value="email">email</option>
                                 <option value="category">Category</option>
                             </select>
                             <button type="submit" class="btn btn-secondary m-1" name="submitSearch">Submit</button> 
