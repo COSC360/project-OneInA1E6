@@ -13,13 +13,12 @@
 </head>
 <?php
   
-   include "../client/header.php";
-  include ("../server/createThread.php");
-  ?>
+  include "../client/header.php";
+ include ("../server/createThread.php");
+ ?>
+
 <body>
   <div class= "container sticky-top rounded-3">
-
-  
   
         <div class="container text-right">
             <div class="row p-1 mb-2 mt-2 bg-white rounded border">
@@ -72,8 +71,7 @@
   </div>
 </body>
 <?php
-  
-  include "../client/footer.php";
+
  ?>
 </html>
 

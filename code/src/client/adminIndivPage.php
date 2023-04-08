@@ -84,7 +84,7 @@ if(!isset($_SESSION))
 </body>
 
 <?php
-include "../client/footer.php";
+
       }
 ?>
 

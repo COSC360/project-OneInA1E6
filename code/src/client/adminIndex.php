@@ -187,7 +187,6 @@ var myChart = new Chart(
 </body>
 
 <?php
-include "../client/footer.php";
       }
       else{
         header('../server/login.php');
