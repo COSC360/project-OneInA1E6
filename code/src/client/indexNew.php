@@ -11,7 +11,6 @@ if(!isset($_SESSION))
     
 ?>
 
-?>
 
 <!DOCTYPE html>
 <html lang="en">

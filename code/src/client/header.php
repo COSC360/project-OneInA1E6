@@ -30,7 +30,7 @@ echo '
     </head>
 
     <body>
-    <div class= "container sticky-top rounded-3">
+    <div class= "mx-2 sticky-top rounded-3">
     <div class="container-fluid sticky-top bg-white rounded-3">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <a href="../client/index.php" class="navbar-brand mb-3 mb-md-0 me-md-auto text-dark">
@@ -104,7 +104,7 @@ else {
     </head>
 
     <body>
-    <div class= "container sticky-top rounded-3">
+    <div class= "sticky-top rounded-3">
     <div class="container-fluid sticky-top bg-white rounded-3">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <a href="../client/index.php" class="navbar-brand mb-3 mb-md-0 me-md-auto text-dark">
